@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AprilPlants</title>
+    <link rel="stylesheet" href="css/home.css"></link>
 </head>
 <body>
-    <H1>PRUEBA</H1>
+    
+    <main>
+        <p></p>
+    </main>
+    <footer>
+        
+    </footer>
 </body>
 </html>

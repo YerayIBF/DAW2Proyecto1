@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'futura';
+    src:url(fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+*{
+    margin: 0;
+    
+}
+
+.headerSup {
+    background-color: #3F5850;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    font-family: 'futura';
+  
+}
