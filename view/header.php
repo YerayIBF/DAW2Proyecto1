@@ -20,8 +20,8 @@
             </div>
             <div>
                 <input>
-                <img src="/img/iconoLupa.png">
-                <a><img src="/img/iconoUsuario.png"></a>
+                <img src="img/iconoLupa.png">
+                <a><img src="img/iconoUsuario.png"></a>
                 <a><img src="/img/iconoCarrito.png"></a>
             </div>
          </div>
