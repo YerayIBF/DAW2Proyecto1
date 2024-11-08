@@ -4,32 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <nav>
         <div class="headerSup">
-         <p><b>ENVÍO GRATIS +49€</b> A TODA LA PENÍNSULA</p>
-         </div>
-         <div class="headerInf">
-            <div>
-                <img src="img/Logo.png">
-                <a>INICIO</a>
-                <a>CARTA</a>
-            </div>
-            <div>
-                <input>
-                <img src="img/iconoLupa.png">
-                <a><img src="img/iconoUsuario.png"></a>
-                <a><img src="/img/iconoCarrito.png"></a>
-            </div>
-         </div>
-    </nav>
-    
+            <p><b>ENVÍO GRATIS +49€</b> A TODA LA PENÍNSULA</p>
+        </div>
 
-   
-            
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="headerInf">
+
+    <div class="logo-menu">
+      <div class="logo">
+        <img>
+      </div>
+    </div>
+
+  
+    <nav class="menu">
+      <a href="#">INICIO</a>
+      <a href="#">CARTA</a>
+    </nav>
+
+  
+    <div class="seccion-iconos">
+      <input type="text" class="buscador" placeholder="Buscar">
+      <a class="icono"><img></a>
+      <a class="icono"><img></a>
+      <a class="icono"><img></a>
+      <p class="numcarrito">0</p> 
+    </div>
+  </div>
+
+
 </body>
 </html>

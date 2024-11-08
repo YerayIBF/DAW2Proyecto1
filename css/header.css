@@ -13,10 +13,11 @@
 }
 
 
-*{
-    margin: 0;
-    
-}
+body{
+   margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 .headerSup {
     background-color: #3F5850;
@@ -30,5 +31,59 @@
 .headerInf{
     background-color: #F7F2EE;
     color: #3F5850;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
+
+.logo-menu {
+  display: flex;
+  align-items: center;
+  }
+
+.menu {
+      display: flex;
+      gap: 20px;
+    }
+.menu a {
+    text-decoration: none;
+    color: #3F5850;
+    font-weight: 700;
+    font-family: 'futura';
+    font-size: 13px;
+  }
+.menu a:hover {
+    color: #3F5850;
+  }
+
+.seccion-iconos {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+.buscador {
+    border: none;
+    border-bottom: 1px solid #3F5850;
+    background-color: transparent;
+    padding-left: 5px;
+    color: #3F5850;
+    width: 100px;
+  }
+
+.buscador::placeholder {
+    color: #3F5850;
+  }
+
+.icono {
+    font-size:20px;
+    color: #3F5850;
+    cursor: pointer;
+  }
+
+.numcarrito {
+    font-size: 12px;
+    margin-left: 5px;
+    vertical-align: top;
+  }

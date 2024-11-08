@@ -1,21 +1,33 @@
 @font-face {
     font-family: 'futura';
-    src:url(/tipografia/Futura\ Book.ttf);
+    src:url(fuentes/Futura/Book.ttf);
     font-weight: 100;
     font-style: light;
 }
 
 @font-face {
     font-family: 'AdobeCaslonPro';
-    src: url(tipografia/acaslonpro-regular.otf);
+    src: url(fuentes/acaslonpro-regular.otf);
     font-style: normal;
     font-weight: 100;
 }
 
 
 *{
-    margin: 0;
+    margin: 0px;
+    padding: 0px;   
+}
+
+.banner{
+    background-image: url("../img/Banner.png");
+    color: white;
+    text-align: center;
+    height: 600px;
     
+}
+
+.seccion1titulo{
+    text-align: center;
 }
 
 
