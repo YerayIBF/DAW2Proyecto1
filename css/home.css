@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'futura';
-    src:url(fuentes/Futura/Book.ttf);
-    font-weight: 100;
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
     font-style: light;
 }
 
 @font-face {
     font-family: 'AdobeCaslonPro';
-    src: url(fuentes/acaslonpro-regular.otf);
+    src: url(../fuentes/acaslonpro-regular.otf);
     font-style: normal;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 

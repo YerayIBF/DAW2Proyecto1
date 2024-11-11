@@ -1,89 +1,98 @@
 @font-face {
-    font-family: 'futura';
-    src:url(fuentes/Futura/Book.ttf);
-    font-weight: 400;
-    font-style: light;
+  font-family: 'futura';
+  src:url(../fuentes/Futura\ Book.ttf);
+  font-weight: 400;
+  font-style: light;
 }
 
 @font-face {
-    font-family: 'AdobeCaslonPro';
-    src: url(fuentes/acaslonpro-regular.otf);
-    font-style: normal;
-    font-weight: 400;
+  font-family: 'AdobeCaslonPro';
+  src: url(../fuentes/acaslonpro-regular.otf);
+  font-style: normal;
+  font-weight: 400;
 }
 
-
-body{
-   margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 .headerSup {
-    background-color: #3F5850;
-    text-align: center;
-    color: white;
-    font-size: 15px;
-    font-family: 'futura';
-     
+  background-color: #3F5850;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-family: 'futura';
+  padding: 5px 0px 5px;
 }
 
-.headerInf{
-    background-color: #F7F2EE;
-    color: #3F5850;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+.headerInf {
+  background-color: #F7F2EE;
+  color: #3F5850;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+ 
 }
 
 .logo-menu {
   display: flex;
   align-items: center;
-  }
+}
+
+.logo {
+
+  
+  margin-left: 40px;
+}
 
 .menu {
-      display: flex;
-      gap: 20px;
-    }
+  display: flex;
+  gap: 40px;
+  margin-left: 80px;
+}
+
 .menu a {
-    text-decoration: none;
-    color: #3F5850;
-    font-weight: 700;
-    font-family: 'futura';
-    font-size: 13px;
-  }
+  text-decoration: none;
+  color: #3F5850;
+  font-weight: 700;
+  font-family: 'futura';
+  font-size: 13px;
+}
+
 .menu a:hover {
-    color: #3F5850;
-  }
+  color: #3F5850;
+}
 
 .seccion-iconos {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
 
 .buscador {
-    border: none;
-    border-bottom: 1px solid #3F5850;
-    background-color: transparent;
-    padding-left: 5px;
-    color: #3F5850;
-    width: 100px;
-  }
+  border: none;
+  border-bottom: 1px solid #3F5850;
+  background-color: transparent;
+  padding-left: 5px;
+  color: #3F5850;
+  width: 100px;
+}
 
 .buscador::placeholder {
-    color: #3F5850;
-  }
+  color: #3F5850;
+}
 
 .icono {
-    font-size:20px;
-    color: #3F5850;
-    cursor: pointer;
-  }
+  font-size: 20px;
+  color: #3F5850;
+  cursor: pointer;
+}
 
 .numcarrito {
-    font-size: 12px;
-    margin-left: 5px;
-    vertical-align: top;
-  }
+  font-size: 12px;
+  margin-left: -10px; 
+  vertical-align: top;
+}
