@@ -67,69 +67,75 @@ Seccion de productos
 
 .seccion1-titulo {
     text-align: center;
-    padding: 40px 0;
+    
+    margin-top: 40px;
    
 }
 
 .seccion1-titulo h2 {
-    font-size: 28px;
+    font-size: 30px;
     color: #000000;
     font-family: 'AdobeCaslonPro';
 }
 
 .seccion1-titulo p {
-    color: #000000;
-    font-size: 16px;
+    color: #333232;
+    font-size: 18x;
     font-family: 'futura';
+    opacity: 70%;
     
     }
 
 
 .plato-card {
     background-color: #F7F2EE; 
-    padding: 100px   0px 0px ;
-    border-radius: 8px;
+    padding: 100px 0px 0px ;
     border-color: #F7F2EE;
     margin-bottom: 20px;
 }
 
 
 .plato-img {
-    width: 400px;
-    height: 400px;
-    max-width: 100%; 
-    max-height: 100%;
-    object-fit: contain; 
+    
+   width: 351px;
+   height: 351px;
 }
-
 
 .btn-anadir {
     font-family: 'futura';
-    font-size: 14px;
-    color: black;
-    background-color: transparent;
+    font-size: 20px;
     border: none;
     cursor: pointer;
     text-transform: uppercase;
     margin-top: 10px;
     padding: 8px 0;
+    width: 355px;
+    opacity: 50%;
+    background-color: white;
+    transition: background-color 600ms;
 }
 
 .plato-card button:hover {
-    color: #94B49C;
+    background-color: #94B49C;
+    color: white;
+}
+
+.texto-producto {
+ text-align: center;
 }
 
 .plato-card h5 {
-    font-family: 'AdobeCaslonPro';
-    font-size: 18px;
+    font-family: 'AdobeCaslonPro' !important;
+    font-size: 20px ; 
     font-weight: bold;
-    color: #000000;
+    color: #3a3a3a;
 }
 
 .plato-card p {
-    font-family: 'futura';
-    font-size: 14px;
-    color: #666666;
+    font-family: 'futura' !important;
+    font-size: 20px ;
+    color: #000000;
+    opacity: 60%;
 }
 
 
@@ -138,13 +144,13 @@ Seccion de productos
     color: white;
     font-family: 'futura';
     font-size: 16px;
-    padding: 10px 30px;
+    padding: 10px 50px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+
     text-transform: uppercase;
 }
 
-.btn-ver-platos {
-    background-color: #7e9f85; 
+.btn-ver-platos:hover {
+    background-color: #C5D7CB; 
 }

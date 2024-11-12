@@ -15,7 +15,7 @@
             <div class="contenedor-banner">
                 <h2>LLENA TU MESA DE SABOR Y SALUD</h2>
                 <h1>Los platos que<br> <i>nutren tu cuerpo y alma</i></h1>
-                <button>VER CARTA</button>
+                <button><b>VER CARTA</b></button>
             </div>
         </div>
         
@@ -28,20 +28,20 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="plato-card text-center">
-                        <img src="img/mezclaTempura.png" class="plato-img" alt="Mezcla de Tempura">
+                        <img src="img/mezclaTempura.webp" class="plato-img" alt="Mezcla de Tempura">
                         <button class="btn-anadir">AÑADIR AL CARRITO</button>
                     </div>
-                    <div class="text-center">
+                    <div class="texto-producto">
                         <h5>Mezcla De Tempura</h5>
                         <p>DESDE €12,99</p>
                     </div>
                 </div>
             <div class="col-md-3">
                 <div class="plato-card text-center">
-                    <img src="img/albahacatailandesa.png" class="plato-img" alt="Albahaca Tailandesa">
+                    <img src="img/albahacatailandesa.webp" class="plato-img" alt="Albahaca Tailandesa">
                     <button class="btn-anadir">AÑADIR AL CARRITO</button>
                 </div>
-                <div class="text-center">
+                <div class="texto-producto">
                     <h5>Albahaca tailandesa</h5>
                     <p>DESDE €18</p>
                 </div>
@@ -51,17 +51,17 @@
                     <img src="img/Tortitas.webp" class="plato-img" alt="Tortitas">
                     <button class="btn-anadir">AÑADIR AL CARRITO</button>
                 </div>
-                <div class="text-center">
+                <div class="texto-producto">
                     <h5>Tortitas</h5>
                     <p>DESDE €11</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="plato-card text-center">
-                    <img src="img/pastelDeArroz.png" class="plato-img" alt="Pastel De Arroz">
+                    <img src="img/pastelDeArroz.webp" class="plato-img" alt="Pastel De Arroz">
                     <button class="btn-anadir">AÑADIR AL CARRITO</button>
                 </div>
-                <div class="text-center">
+                <div class="texto-producto">
                     <h5>Pastel De Arroz</h5>
                     <p>DESDE €14</p>
                 </div>
@@ -69,9 +69,11 @@
         </div>
 
         <div class="text-center my-5">
-            <button class="btn-ver-platos">VER PLATOS</button>
+            <button class="btn-ver-platos"><b>VER PLATOS</b></button>
         </div>
     </div>
+
+
 
 
 
