@@ -24,7 +24,14 @@ body {
   color: white;
   font-size: 15px;
   font-family: 'futura';
-  padding: 5px 0px 5px;
+
+  padding: 15px 0px 15px;
+
+}
+
+.headerSup p{
+
+  margin: 0px !important; 
 }
 
 .headerInf {
