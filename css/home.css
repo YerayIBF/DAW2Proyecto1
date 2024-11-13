@@ -109,7 +109,7 @@ Seccion de productos
     text-transform: uppercase;
     margin-top: 10px;
     padding: 8px 0;
-    width: 355px;
+    width: 100%;
     opacity: 50%;
     background-color: white;
     transition: background-color 600ms;
@@ -124,14 +124,15 @@ Seccion de productos
  text-align: center;
 }
 
-.plato-card h5 {
+.texto-producto h5 {
     font-family: 'AdobeCaslonPro' !important;
-    font-size: 20px ; 
+    font-size: 25px ; 
     font-weight: bold;
     color: #3a3a3a;
+    margin: 0;
 }
 
-.plato-card p {
+.texto-producto p {
     font-family: 'futura' !important;
     font-size: 20px ;
     color: #000000;
