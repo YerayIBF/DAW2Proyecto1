@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
+    <title>Header April</title>
     <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
@@ -20,15 +20,15 @@
     </div>
 
     <nav class="menu">
-      <a href="#">INICIO</a>
-      <a href="#">CARTA</a>
+      <a href="?controller=producto&action=index">INICIO</a>
+      <a href="?controller=producto&action=carta">CARTA</a>
     </nav>
   
     <div class="seccion-iconos">
       <input type="text" class="buscador" placeholder="Buscar">
       <a class="icono"><img src="img/iconoLupa.png"></a>
-      <a class="icono"><img src="img/iconoUsuario.png"></a>
-      <a class="icono"><img src="img/iconoCarrito.png"></a>
+      <a class="icono" href="?controller=producto&action=iniciarSession"><img src="img/iconoUsuario.png"></a>
+      <a class="icono" href="?controller=producto&action=carrito"><img src="img/iconoCarrito.png"></a>
       <p class="numcarrito">0</p> 
     </div>
   </div>

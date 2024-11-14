@@ -4,28 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AprilPlants</title>
+    <title>Home April</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
     <main>
-        <div class="banner">
+        <section class="banner">
 
             <div class="contenedor-banner">
                 <h2>LLENA TU MESA DE SABOR Y SALUD</h2>
                 <h1>Los platos que<br> <i>nutren tu cuerpo y alma</i></h1>
                 <button><b>VER CARTA</b></button>
             </div>
-        </div>
+        </section>
 
-        <div class="seccion1-titulo">
+        <section class="seccion1-titulo">
             <h2>Platos</h2>
             <p>Los mas vendidos</p>
-        </div>
+        </section>
 
-        <div class="container-fluid">
+        <section class="container-fluid">
             <div class="row">
                 <?php
                 $contador = 0;
@@ -50,8 +50,7 @@
                     <button class="btn-ver-platos"><b>VER PLATOS</b></button>
                 </div>
             </div>
-
-        </div>
+        </section>
 
         <section class="especialidades-seccion my-5">
             <div class="row">

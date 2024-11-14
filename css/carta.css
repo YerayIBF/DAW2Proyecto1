@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Seccion-titulo-carta
+{
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.Seccion-titulo-carta h1
+{
+    font-family: 'AdobeCaslonPro';
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+
+.Seccion-titulo-carta a
+{
+    font-family: 'futura';
+    color: #3F5850 !important;
+}
+
+.seccion1-titulo {
+    text-align: center;
+    margin-top: 40px;
+   
+}
+
+.seccion1-titulo h2 {
+    font-size: 30px;
+    color: #000000;
+    font-family: 'AdobeCaslonPro';
+}
+
+.seccion1-titulo p {
+    color: #333232;
+    font-size: 18x;
+    font-family: 'futura';
+    opacity: 70%;
+    
+}
+
+.plato-card {
+    background-color: #F7F2EE; 
+    padding: 100px 0px 0px ;
+    border-color: #F7F2EE;
+    margin-bottom: 20px;
+}
+
+
+.plato-img {
+   object-fit: contain;
+   width: 100%;
+   height: 100%;
+}
+
+.btn-anadir {
+    font-family: 'futura';
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+    padding: 8px 0;
+    width: 100%;
+    opacity: 50%;
+    background-color: white;
+    transition: background-color 600ms;
+}
+
+.plato-card button:hover {
+    background-color: #94B49C; 
+    color: white;
+}
+
+.texto-producto {
+ text-align: center;
+}
+
+.texto-producto h5 {
+    font-family: 'AdobeCaslonPro' !important;
+    font-size: 25px ; 
+    font-weight: bold;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+.texto-producto p {
+    font-family: 'futura' !important;
+    font-size: 20px ;
+    color: #000000;
+    opacity: 60%;
+}
+
+
+.btn-ver-platos {
+    background-color: #94B49C;
+    color: white;
+    font-family: 'futura';
+    font-size: 16px;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-ver-platos:hover {
+    background-color: #C5D7CB; 
+}

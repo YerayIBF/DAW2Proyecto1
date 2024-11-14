@@ -67,7 +67,6 @@ Seccion de productos
 
 .seccion1-titulo {
     text-align: center;
-    
     margin-top: 40px;
    
 }
@@ -115,8 +114,8 @@ Seccion de productos
     transition: background-color 600ms;
 }
 
-.plato-card button:hover {
-    background-color: #94B49C;
+.plato-card:hover .btn-anadir {
+    background-color: #94B49C; 
     color: white;
 }
 
