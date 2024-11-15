@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+*{
+margin: 0;
+padding: 0;
+
+}
+
+.contenedor {
+    display:flex;
+    
+    justify-content: center;
+}
+
+.contenedor form  {
+    text-align: center;
+
+}
+
+.a-login{
+    text-decoration: none;
+    color: #3a3a3a;
+    font-size: 17px;
+    font-family: 'futura';
+    text-align: center;
+}
+
+.login-titulo{
+font-family: 'AdobeCaslonPro';
+text-align: center;
+font-size: 46px;
+font-weight: 700
+}
+
+.label-login{
+    margin-bottom: 5px;
+}
+
+.inputs-login{
+width: 600px;
+height: 35px;
+border-color: #3a3a3a;
+}
+
+.boton-login{
+border-radius: 60px;
+width: 250px;
+text-decoration: none;
+border: none;
+height: 60px;
+color: white;
+background-color: #0EC289;
+font-weight: 700;
+}
+.boton-login:hover {
+    background-color: #606060;
+}

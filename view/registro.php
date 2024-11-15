@@ -7,21 +7,25 @@
 </head>
 <body>
     <main>
-        <seccion>
-            <form>
+        <section>
+            <h1>Crear cuenta</h1>
+            <form action="?controller=producto&action=registrarte" method="POST">   
                 <label for="nombre">Nombre</label>
-                <input  type="text" name="nombre">
-                <label for="Apellido">Apellido</label>
-                <input  type="text" name="apellido">
-                <label for="Correo electrónico">Correo electrónico</label>
-                <input  type="email" name="email">
-                <label for="Contraseña">Contraseña</label>
-                <input type="password" name="contraseña">
-                <div class="boton-usuario">
-                    <input type="button" value="CREAR"> 
-                </div>
+                <br>
+                <input type="text" name="nombre" required>
+                <br>
+                <label for="correo">Correo electrónico</label>
+                <br>
+                <input type="email" name="correo" required>
+                <br>
+                <label for="contraseña">Contraseña</label>
+                <br>
+                <input type="password" name="contraseña" required>
+                <br>
+                <br>
+                <input type="submit" value="CREAR">
             </form>
-        </seccion>
+        </section>
     </main>
 </body>
 </html>
