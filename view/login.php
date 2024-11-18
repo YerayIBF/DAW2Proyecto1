@@ -10,8 +10,7 @@
     <main>
 <h1 class="login-titulo">Ingresar</h1>
     <section class="contenedor">
-       
-        <form>
+        <form class="form-login">
             <label class="label-login" for="correo">Correo electrónico</label>
             <br>
             <input type="email" name="correo" class="inputs-login"> 
@@ -20,11 +19,15 @@
             <br>
             <input type="password" name="contraseña" class="inputs-login">
             <br>
-            <a class="a-login">¿Olvidó su contraseña?</a>
-            <br>
-            <input class="boton-login" type="submit" value="REGISTRARSE">
-            <br>
-            <a href="?controller=producto&action=registrarte" class="a-login">Crear cuenta</a>
+            <div class="centrar-boton">
+                <div class="ajuste-a">
+                    <a class="a-login">¿Olvidó su contraseña?</a>
+                </div>
+             
+                <input class="boton-login" type="submit" value="REGISTRARSE">
+                <br>
+                <a href="?controller=producto&action=registrarte" class="a-login">Crear cuenta</a>
+            </div>
         </form>
     </section>
 </main>

@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura\ Book.ttf);
+    font-weight: 400;
+    font-style: light;
+  }
+  
+  @font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+.footer {
+    
+    padding: 40px 0;
+}
+
+.seccion1-footer{
+    background-color: #E3ECE6;
+   
+}
+.footer h2, .footer h5 {
+    font-weight: bold;
+}
+.footer h2 {
+    font-size: 40px;
+}
+.footer p, .footer a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer .iconos-sociales i {
+    margin-right: 15px;
+}
+
+.select-pais {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.boton-footer{
+height: 60px;
+
+}
