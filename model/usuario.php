@@ -6,17 +6,13 @@ class Usuario {
     protected $contraseña;
     protected $rol;
 
-    public function __construct($ID_Usuario, $nombre, $correo, $contraseña, $rol = 'usuario') {
+    public function __construct($ID_Usuario = null, $nombre  = null, $correo  = null, $contraseña  = null, $rol = 'usuario') {
         $this->ID_Usuario = $ID_Usuario;
         $this->nombre = $nombre;
         $this->correo = $correo;
         $this->contraseña = $contraseña;
         $this->rol = $rol;
-    }
-    
-  
-
-
+    }  
 
     /**
      * Get the value of nombre
@@ -101,7 +97,7 @@ class Usuario {
     /**
      * Get the value of ID_Usuario
      */ 
-    public function getID_Usuario()
+    public function getIDUsuario()
     {
         return $this->ID_Usuario;
     }
@@ -111,7 +107,7 @@ class Usuario {
      *
      * @return  self
      */ 
-    public function setID_Usuario($ID_Usuario)
+    public function setIDUsuario($ID_Usuario)
     {
         $this->ID_Usuario = $ID_Usuario;
 

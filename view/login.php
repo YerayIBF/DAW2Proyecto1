@@ -10,14 +10,14 @@
     <main>
 <h1 class="login-titulo">Ingresar</h1>
     <section class="contenedor">
-        <form class="form-login">
-            <label class="label-login" for="correo">Correo electrónico</label>
+        <form class="form-login"   action="?controller=producto&action=iniciarSession" method="POST">
+            <label class="label-login" for="correo" >Correo electrónico</label>
             <br>
-            <input type="email" name="correo" class="inputs-login"> 
+            <input type="email" name="correo" class="inputs-login" required> 
             <br>
             <label class="label-login" for="contraseña">Contraseña</label>
             <br>
-            <input type="password" name="contraseña" class="inputs-login">
+            <input type="password" name="contraseña" class="inputs-login" required>
             <br>
             <div class="centrar-boton">
                 <div class="ajuste-a">

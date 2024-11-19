@@ -27,7 +27,7 @@
     <div class="seccion-iconos">
       <input type="text" class="buscador" placeholder="Buscar">
       <a class="icono"><img src="img/iconoLupa.png"></a>
-      <a class="icono" href="?controller=producto&action=iniciarSession"><img src="img/iconoUsuario.png"></a>
+      <a class="icono" href="?controller=producto&action=verCuenta"><img src="img/iconoUsuario.png"></a>
       <a class="icono" href="?controller=producto&action=carrito"><img src="img/iconoCarrito.png"></a>
       <p class="numcarrito">0</p> 
     </div>

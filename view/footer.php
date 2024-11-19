@@ -97,14 +97,12 @@
                     <div class="select-pais">
                         <select class="form-select d-inline w-auto" id="countrySelect">
                             <option value="es" data-image="img/BanderaEspaña.png"  selected>España</option>
-                            <option value="fr" data-image="">Francia</option>
-                            <option value="de" data-image="">Alemania</option>
+                            <option value="fr" data-image="">Portugal</option>
                         </select>
 
                         <select class="form-select d-inline w-auto">
                             <option selected>Español</option>
-                            <option>Francés</option>
-                            <option>Alemán</option>
+                            <option>Portugués</option>
                         </select>
                     </div>
                 </div>
