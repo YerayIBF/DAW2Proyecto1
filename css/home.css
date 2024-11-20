@@ -19,7 +19,7 @@
 }
 
 .banner {
-    background-image: url("../img/Banner.png");
+    background-image: url("../img/Banner.webp");
     color: white;
     text-align: center;
     background-size: cover;
@@ -247,6 +247,7 @@ margin-left: 20px;
     max-height: 380px;
     max-width: 680;
     height: 100%;
+    margin-bottom: 20px;
 }
 
 

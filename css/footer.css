@@ -12,11 +12,17 @@
     font-weight: 400;
   }
   
-.footer {
-    
-    padding: 40px 0;
-}
 
+.boton-footer{
+    color: white;
+    background-color: #333333;
+    letter-spacing: 3px;
+    font-size: 14px;
+    font-family: 'futura';
+    font-weight: bolder;
+    margin-left: 20px;
+    padding: 20px;
+}
 .seccion1-footer{
     background-color: #E3ECE6;
    
