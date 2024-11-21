@@ -16,7 +16,7 @@
             <div class="contenedor-banner">
                 <h2>LLENA TU MESA DE SABOR Y SALUD</h2>
                 <h1>Los platos que<br> <i>nutren tu cuerpo y alma</i></h1>
-                <button><b>VER CARTA</b></button>
+               <a href="?controller=producto&action=carta"><button ><b>VER CARTA</b></button></a>
             </div>
         </section>
 
@@ -81,7 +81,7 @@
 
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="img/Seccion2.3.png" class="" alt="Platos recomendados">
+                            <img src="img/Seccion2.3.jpg"   class="card-img-top correcionImagen" alt="Platos recomendados">
                         </div>
 
                         <h5 class="especialidades-seccion-titulo">Los platos más recomendados para tu paladar</h5>
