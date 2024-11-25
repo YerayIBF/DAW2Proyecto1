@@ -37,29 +37,35 @@
   </section>
 
   <section id="carrito-panel">
-    <div class="carrito-header">
-      <h2 class="titulo-panel">Tu Pedido</h2>
-
-    </div>
     <div>
       <div class="producto-panel">
-        <div class="tarjeta-panel">
-          <img class="img-panel" src="img/albahacatailandesa.webp">
+        <h2 class="titulo-panel">Tu Pedido</h2>
+        <div class="flex-tarjeta-panel">
+          <div class="tarjeta-panel">
+            <img class="img-panel" src="img/albahacatailandesa.webp">
+          </div>
+          <div class="flex-producto-texto">
+            <p class="p-nombre-producto">Nombre Producto</p>
+            <p class="p-cantidad">x 1</p>
+            <p class="p-precio">€14,99</p>
+            <a class="a-eliminar"><b>X</b> ELIMINAR</a>
+          </div>
         </div>
-          <p>Nombre Producto</p>
-          <p>Cantidad</p>
-          <p>Precio</p>
-          <a><button class="">ELIMINAR</button></a>
-          <hr class="linea-panel">
+      </div>
+      <hr class="linea-panel">
+      <div class="subtotal-panel">
+        <div class="contenedor-subtotal-compra">
+          <div class="contener-subtotal texto-subtotal">
+            <p>SUBTOTAL (1 ITEMS)</p>
+            <p>€14,99</p>
+          </div>
+          <p class="texto-envio">Envío Gratis+49€</p>
         </div>
-        <div class="subtotal-panel">
-          <p>SUBTOTAL (1 ITEMS)</p>
-          <p>Precio total</p>
-          <p>Envío Gratis+49€</p>
-        </div>
-        <a href="?controller=producto&action=carrito"><button class="boton-panel">Comprar</button></a>
-        <a id="seguir-comprando" class="d-block text-center mt-3">Seguir comprando</a>
-      
+      </div>
+      <div class="contenedor-boton-panel">
+        <a href="?controller=producto&action=carrito"><button class="boton-panel-comprar">Comprar</button></a>
+      </div>
+      <a id="seguir-comprando" class="d-block text-center a-panel">Seguir comprando</a>
     </div>
   </section>
 
