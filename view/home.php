@@ -16,7 +16,7 @@
             <div class="contenedor-banner">
                 <h2>LLENA TU MESA DE SABOR Y SALUD</h2>
                 <h1>Los platos que<br> <i>nutren tu cuerpo y alma</i></h1>
-               <a href="?controller=producto&action=carta"><button ><b>VER CARTA</b></button></a>
+                <a href="?controller=producto&action=carta"><button><b>VER CARTA</b></button></a>
             </div>
         </section>
 
@@ -34,12 +34,15 @@
                 ?>
                     <div class="col-md-3">
                         <div class="plato-card text-center">
-                            <img src="img/<?= htmlspecialchars($producto->getImagen()); ?>" class="plato-img" alt="<?= htmlspecialchars($producto->getNombre()); ?>">
-                            <button class="btn-anadir">AÑADIR AL CARRITO</button>
+                            <img src="img/<?= $producto->getImagen(); ?>" class="plato-img" alt="<?= $producto->getNombre(); ?>">
+                            <form action="?controller=producto&action=addProducto" method="POST">
+                                <input type="hidden" name="ID_Producto" value="<?= $producto->getID_Producto(); ?>">
+                                <button type="submit" class="btn-anadir">AÑADIR AL CARRITO</button>
+                            </form>
                         </div>
                         <div class="texto-producto">
-                            <h5><?= htmlspecialchars($producto->getNombre()); ?></h5>
-                            <p>DESDE €<?= htmlspecialchars($producto->getPrecio()); ?></p>
+                            <h5><?= $producto->getNombre(); ?></h5>
+                            <p>DESDE €<?=$producto->getPrecio(); ?></p>
                         </div>
                     </div>
                 <?php
@@ -54,59 +57,60 @@
 
         <section class="especialidades-seccion my-5">
             <div class="row">
-            <div class="col-md-4 d-flex flex-column justify-content-center">
-                <h2>¡TE CONTAMOS NUESTRAS ESPECIALIDADES!</h2>
-                <p>Todo lo que necesitas saber sobre nuestros platos y cómo disfrutar de una experiencia gastronómica única. Descubre nuestro menú y las delicias que ofrecemos en cada estación, diseñadas para satisfacer todos los gustos.</p>
-                <a href="#" class="ver-todos">VER TODOS</a>
-            </div>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="img/Seccion2.1.webp" class="card-img-top correcionImagen" alt="Terraza">
-                        </div>
-                        <h5 class="especialidades-seccion-titulo">Cómo disfrutar este otoño de nuestra terraza</h5>
-                        <a href="#" class="ver-mas">VER MAS</a>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="img/Seccion2.2.avif" class="card-img-top correcionImagen" alt="Cena Perfecta">
-                        </div>
-                        <h5 class="especialidades-seccion-titulo">Cómo preparar una cena perfecta</h5>
-                        <p class="especialidades-seccion-texto">Consejos de nuestros chefs para preparar una cena inolvidable en casa.</p>
-                        <a href="#" class="ver-mas">VER MAS</a>
-                    </div>
-                    
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="img/Seccion2.3.jpg"   class="card-img-top correcionImagen" alt="Platos recomendados">
+                <div class="col-md-4 d-flex flex-column justify-content-center">
+                    <h2>¡TE CONTAMOS NUESTRAS ESPECIALIDADES!</h2>
+                    <p>Todo lo que necesitas saber sobre nuestros platos y cómo disfrutar de una experiencia gastronómica única. Descubre nuestro menú y las delicias que ofrecemos en cada estación, diseñadas para satisfacer todos los gustos.</p>
+                    <a href="#" class="ver-todos">VER TODOS</a>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="img/Seccion2.1.webp" class="card-img-top correcionImagen" alt="Terraza">
+                            </div>
+                            <h5 class="especialidades-seccion-titulo">Cómo disfrutar este otoño de nuestra terraza</h5>
+                            <a href="#" class="ver-mas">VER MAS</a>
                         </div>
 
-                        <h5 class="especialidades-seccion-titulo">Los platos más recomendados para tu paladar</h5>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="img/Seccion2.2.avif" class="card-img-top correcionImagen" alt="Cena Perfecta">
+                            </div>
+                            <h5 class="especialidades-seccion-titulo">Cómo preparar una cena perfecta</h5>
+                            <p class="especialidades-seccion-texto">Consejos de nuestros chefs para preparar una cena inolvidable en casa.</p>
+                            <a href="#" class="ver-mas">VER MAS</a>
+                        </div>
+
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="img/Seccion2.3.jpg" class="card-img-top correcionImagen" alt="Platos recomendados">
+                            </div>
+
+                            <h5 class="especialidades-seccion-titulo">Los platos más recomendados para tu paladar</h5>
                             <p class="especialidades-seccion-texto">Una selección de los platos más populares que no te puedes perder.</p>
                             <a href="#" class="ver-mas">VER MAS</a>
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="menu-seccion container-fluid my-5">
+        <section class="menu-seccion container-fluid my-5">
             <div class="row">
-            <div class="col-md-6 d-flex flex-column justify-content-center">
-                <img class="menu-seccion-img" src="img/Seccion3.png">
-            </div>
+                <div class="col-md-6 d-flex flex-column justify-content-center">
+                    <img class="menu-seccion-img" src="img/Seccion3.png">
+                </div>
 
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="menu-seccion-titulo">Nuestros <i>menus</i> de <br>cada <i>estacion</i></h2>
-                <p  class="menu-seccion-subtitulo">Durante todo el año disponemos de diferentes menus para que nuestros clientes <br>puedan degustar platos con ingredientes de temporada.</p>
-                <p  class="menu-seccion-descuento ">20% de descuento</p>
-            </div>
-    </section>
+                <div class="col-md-6 d-flex flex-column">
+                    <h2 class="menu-seccion-titulo">Nuestros <i>menus</i> de <br>cada <i>estacion</i></h2>
+                    <p class="menu-seccion-subtitulo">Durante todo el año disponemos de diferentes menus para que nuestros clientes <br>puedan degustar platos con ingredientes de temporada.</p>
+                    <p class="menu-seccion-descuento ">20% de descuento</p>
+                </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -17,6 +17,21 @@ class platosDAO {
         $con->close();
         return $productos;
     }
+    
+    public static function getId($id)
+    {
+        $con = database::connect();
+        $stmt = $con->prepare("SELECT * FROM Productos WHERE ID_Producto = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $producto = $result->fetch_object("Platos");
+        $con->close();
+
+        return $producto;
+    }
+
  }
 
 ?>

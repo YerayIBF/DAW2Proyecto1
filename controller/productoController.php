@@ -8,6 +8,7 @@ class productoController
 {
     public function index()
     {
+   
         session_start();
         $productos = platosDAO::getAll();
         include_once 'view/header.php';
@@ -112,4 +113,33 @@ class productoController
         header("Location: ?controller=producto&action=iniciarSession");
         exit();
     }
+
+    public function addProducto()
+{
+    session_start();
+
+   
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: ?controller=producto&action=iniciarSession");
+        exit();
+    }
+
+   
+    if (isset($_POST['ID_Producto'])) {
+        $idProducto = $_POST['ID_Producto'];
+
+        
+        $producto = platosDAO::getId($idProducto);
+       
+        if ($producto) {
+            if (!isset($_SESSION['carrito'])) {
+                $_SESSION['carrito'] = [];
+            }
+
+            $_SESSION['carrito'][] = $producto;
+        }
+    }
+    header("Location: ?controller=producto&action=index");
+    exit();
+}
 }
