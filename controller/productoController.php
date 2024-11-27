@@ -115,31 +115,74 @@ class productoController
     }
 
     public function addProducto()
+    {
+        session_start();
+    
+        if (!isset($_SESSION['usuario'])) {
+            header("Location: ?controller=producto&action=iniciarSession");
+            exit();
+        }
+    
+        if (isset($_POST['ID_Producto'])) {
+            $idProducto = $_POST['ID_Producto'];
+    
+        
+            $producto = platosDAO::getId($idProducto);
+    
+            if ($producto) {
+                if (!isset($_SESSION['carrito'])) {
+                    $_SESSION['carrito'] = [];
+                }
+    
+               
+                $existe = false;
+                foreach ($_SESSION['carrito'] as &$item) {
+                    if ($item->getID_Producto() == $idProducto) {
+                
+                        $cantidadActual = $item->getCantidad();
+                        $item->setCantidad($cantidadActual + 1);
+                        $existe = true;
+                        break;
+                    }
+                }
+    
+             
+                if (!$existe) {
+                    $producto->setCantidad(1); 
+                    $_SESSION['carrito'][] = $producto;
+                }
+            }
+        }
+        header("Location: ?controller=producto&action=index");
+        exit();
+    }
+
+    public function eliminarProducto()
 {
     session_start();
 
-   
     if (!isset($_SESSION['usuario'])) {
         header("Location: ?controller=producto&action=iniciarSession");
         exit();
     }
 
-   
-    if (isset($_POST['ID_Producto'])) {
-        $idProducto = $_POST['ID_Producto'];
+    if (isset($_GET['id'])) {
+        $idProducto = $_GET['id'];
 
-        
-        $producto = platosDAO::getId($idProducto);
-       
-        if ($producto) {
-            if (!isset($_SESSION['carrito'])) {
-                $_SESSION['carrito'] = [];
+        if (isset($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $key => $producto) {
+                if ($producto->getID_Producto() == $idProducto) {
+                    unset($_SESSION['carrito'][$key]);
+                    break;
+                }
             }
-
-            $_SESSION['carrito'][] = $producto;
+        
+            $_SESSION['carrito'] = array_values($_SESSION['carrito']);
         }
     }
-    header("Location: ?controller=producto&action=index");
-    exit();
+
+        header("Location: ?controller=producto&action=index");
+        exit();
 }
+
 }

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+.No-Productos{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 125px 55px;
+
+}
+
+.titulo-carrito-seguir{
+font-family: 'AdobeCaslonPro';
+text-align: center;
+font-weight: bolder;
+font-size: 46px;
+margin: 0px 0px 17.5px !important;
+}
+
+.subtitulo-seguir{
+    margin: 0px !important;
+    font-size: 17px;
+    font-family: 'futura';
+    margin: 0px 0px 8px !important;
+}
+
+
+
+.boton-seguir{
+    letter-spacing: 2px;
+    background-color: #0EC289;
+    border-radius: 60px;
+    border: none;
+    color: white;
+    height: 65px;
+    width: 339px;
+    padding: 20px 60px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'futura';
+    font-size: 15.6px;
+    font-weight: 700;
+}
+
+
+.boton-seguir:hover {
+    background-color: #606060;
+    
+}
+
+.titulo-subtitulo{
+    text-align: center;
+    margin: 0px 0px 27.2px !important;
+}
+.titulo-carrito{
+    font-family: 'AdobeCaslonPro';
+    text-align: center;
+    font-weight: bolder;
+    font-size: 46px;
+    margin: 16px 0px !important;
+}
+
+.subtitulo-carrito{
+font-size: 15px;
+font-family: 'futura';
+padding: 0px 0px 1px;
+color: #3a3a3a;
+
+text-decoration: underline;
+}

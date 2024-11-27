@@ -6,15 +6,16 @@ abstract class Productos{
     protected $Descripcion;
     protected $Precio;
     protected $Imagen;
+    protected $Cantidad;
 
-
-    public function __construct($ID_Producto,$Nombre,$Descripcion,$Precio,$Imagen)
+    public function __construct($ID_Producto,$Nombre,$Descripcion,$Precio,$Imagen,$Cantidad)
     {
         $this->ID_Producto=$ID_Producto;
         $this->Nombre=$Nombre;
         $this->Descripcion=$Descripcion;
         $this->Precio=$Precio;
         $this->Imagen=$Imagen;
+        $this->Cantidad=$Cantidad;
     }
 
 
@@ -115,6 +116,26 @@ abstract class Productos{
     public function setID_Producto($ID_Producto)
     {
         $this->ID_Producto = $ID_Producto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Cantidad
+     */ 
+    public function getCantidad()
+    {
+        return $this->Cantidad;
+    }
+
+    /**
+     * Set the value of Cantidad
+     *
+     * @return  self
+     */ 
+    public function setCantidad($Cantidad)
+    {
+        $this->Cantidad = $Cantidad;
 
         return $this;
     }
