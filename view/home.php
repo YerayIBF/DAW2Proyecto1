@@ -50,7 +50,7 @@
                 }
                 ?>
                 <div class="text-center my-5">
-                    <button class="btn-ver-platos"><b>VER PLATOS</b></button>
+                <a href="?controller=producto&action=carta"> <button class="btn-ver-platos"><b>VER PLATOS</b></button></a>
                 </div>
             </div>
         </section>
