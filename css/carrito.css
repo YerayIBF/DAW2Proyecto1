@@ -12,6 +12,7 @@
     font-weight: 400;
 }
 
+
 .No-Productos {
     display: flex;
     align-items: center;
@@ -79,6 +80,32 @@
     padding: 0px 0px 1px;
     color: #3a3a3a;
     text-decoration: underline;
+}
+.table {
+    table-layout: fixed;
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.th-producto, .td-producto {
+    width: 40%; 
+    text-align: left; 
+}
+
+ 
+.th-Cantidad, .td-Cantidad {
+    width: 20%; 
+    text-align: right; 
+}
+
+.th-Total, .td-Total{
+    width: 10%;
+    text-align: right;
+}
+
+.th-precio, .td-precio{
+    width: 30%;
+    text-align: right;
 }
 
 th {
@@ -177,8 +204,9 @@ th {
 .img-carta {
     
     margin: 0 !important;
-    width: 63px;
-    height: 95px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
 }
 
 .tarjeta-carrito{
@@ -193,4 +221,29 @@ th {
 
 .div-display-flex{
     display: flex;
+}
+
+
+/*Seccion de finalizar compra*/
+
+.boton-finalizar-compra{
+    color: white;
+    background-color: #0EC289;
+    padding: 20px 60px;
+    border-radius: 60px;
+    border: none;
+    font-weight: 700;
+    font-family: 'futura';
+    letter-spacing: 2px;
+    height: 60px;
+}
+
+.boton-finalizar-compra:hover{
+
+    background-color: #606060;
+}
+
+.imagenes-tamaño{
+    width: 150px;
+    height: 44px;
 }

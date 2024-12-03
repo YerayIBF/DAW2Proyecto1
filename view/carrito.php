@@ -18,7 +18,6 @@
                 <a><button class="boton-seguir">SEGUIR COMPRANDO -></button></a>
             </section>
         <?php } else { ?>
-
             <section class="titulo-subtitulo">
                 <h1 class="titulo-carrito">Carrito</h1>
                 <a class="subtitulo-carrito"> Seguir comprando</a>
@@ -37,58 +36,67 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php if (!empty($_SESSION['carrito'])) { ?>
-                                <?php foreach ($_SESSION['carrito'] as $producto) { ?>
-                                <tr>
-                                    <td class="td-producto">
-                                        <div class="d-flex align-items-center">
-                                            <div class="tarjeta-espaciado">
-                                                <div class="tarjeta-carrito">
-                                                    <img src="img/<?= $producto->getImagen(); ?>" alt="<?= $producto->getNombre(); ?>" class="img-carta">   
-                                                </div>
-                                            </div>
+                                <?php if (!empty($_SESSION['carrito'])) { ?>
+                                    <?php foreach ($_SESSION['carrito'] as $producto) { ?>
+                                        <tr>
+                                            <td class="td-producto">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="tarjeta-espaciado">
+                                                        <div class="tarjeta-carrito">
+                                                            <img src="img/<?= $producto->getImagen(); ?>" alt="<?= $producto->getNombre(); ?>" class="img-carta">
+                                                        </div>
+                                                    </div>
 
-                                            <div>
-                                                <h5 class="nombre-producto"><?= $producto->getNombre(); ?></h5>
-                                                <ul class="descripcion-producto">
-                                                    <li><?= $producto->getDescripcion(); ?></li>
-                                                </ul>
-                                                <div class="quitar-producto"> <a href="">Quitar</a></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="td-precio text-end">€<?= $producto->getPrecio() ?></td>
-                                    <td class="td-Cantidad text-end">
-                                        <input class="cantidad-input" type="number" value="<?= $producto->getCantidad() ?>" min="1">
-                                    </td>
-                                    <td class="td-Total text-end">€2</td> <!-- Calcular precio total por cantidad de producto -->
-                                </tr>
-                                <?php } ?>
+                                                    <div>
+                                                        <h5 class="nombre-producto"><?= $producto->getNombre(); ?></h5>
+                                                        <ul class="descripcion-producto">
+                                                            <li><?= $producto->getDescripcion(); ?></li>
+                                                        </ul>
+                                                        <div class="quitar-producto"> <a href="">Quitar</a></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="td-precio text-end">€<?= $producto->getPrecio() ?></td>
+                                            <td class="td-Cantidad text-end">
+                                                <input class="cantidad-input" type="number" value="<?= $producto->getCantidad() ?>" min="1">
+                                            </td>
+                                            <td class="td-Total text-end">€<?= number_format($producto->totalProducto,2) ?></td> 
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
-            <section>
-                <form>
-                            <label>Añade tu DEDICATORIA especial o comentarios del pedido.</label>
-                            <p></p>
-                        </div>
-                        <div class="div-display-flexdiv-display-flex">
-                            <p>subtotal</p>
-                            <p>precio total </p>
-                        </div>
-                    </div>
-                    <div>
-                        <textarea></textarea>
-                        <p>Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
-                    </div>
-                    <button type="submit">CONTINUAR CON EL ENVÍO</button>
-                </form>
+           
+            <form method="POST" action="?controller=producto&action=finalizarPedido">
+                <div class="container-fluid">
+                    <div class="row">
 
-            </section>
+                        <div class="col-lg-6 ">
+                            <label for="dedicatoria" class="form-label fw-bold">Añade tu DEDICATORIA especial o comentarios del pedido.</label>
+                            <textarea id="dedicatoria" class="form-control" placeholder=""></textarea>
+                        </div>
+                   
+                        <div class="col-lg-6 text-end">
+                            <div class="mb-3">
+                                <span class="">Subtotal</span>
+                                <span class="">€<?= number_format($totalCarrito,2) ?></span>
+                            </div>
+                            <div class=" text-muted">
+                                Impuesto incluido. <a href="#" class="text-decoration-none">Los gastos de envío</a> se calculan en la pantalla de pagos.
+                            </div>
+                            <input type="submit"  class=" boton-finalizar-compra" value="CONTINUAR CON EL ENVÍO">
+                            <div class="d-flex justify-content-end gap-2 ">
+                                <img src="img/BotonShoppay.webp" class="imagenes-tamaño" alt="Shop Pay">
+                                <img  alt="PayPal">
+                                <img  alt="Google Pay">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
 
         <?php } ?>

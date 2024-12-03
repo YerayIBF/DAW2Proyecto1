@@ -39,8 +39,39 @@ class productoController
     public function carrito()
     {
         session_start();
+
+        $totalCarrito = 0;
+
+       
+        if (isset($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $producto) {
+              
+                $totalProducto = $producto->getPrecio() * $producto->getCantidad();
+    
+              
+                $totalCarrito += $totalProducto;
+    
+               
+                $producto->totalProducto = $totalProducto;  
+            }
+        }
+
         include_once 'view/header.php';
         include_once 'view/carrito.php';
+        include_once 'view/footer.php';
+    }
+
+    public function finalizarPedido()
+    {
+        session_start();
+        header("Location: ?controller=producto&action=paginaPedido");
+    }
+
+    public function paginaPedido()
+    {
+        session_start();
+        include_once 'view/header.php';
+        include_once 'view/finalizar_pedido.php';
         include_once 'view/footer.php';
     }
 
