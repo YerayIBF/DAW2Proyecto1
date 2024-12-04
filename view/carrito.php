@@ -52,15 +52,25 @@
                                                         <ul class="descripcion-producto">
                                                             <li><?= $producto->getDescripcion(); ?></li>
                                                         </ul>
-                                                        <div class="quitar-producto"> <a href="">Quitar</a></div>
+                                                        <div class="quitar-producto">
+                                                            <a href="?controller=producto&action=quitarProductoCarrito&id=<?= $producto->getID_Producto(); ?>">Quitar</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="td-precio text-end">€<?= $producto->getPrecio() ?></td>
                                             <td class="td-Cantidad text-end">
-                                                <input class="cantidad-input" type="number" value="<?= $producto->getCantidad() ?>" min="1">
+                                                <form method="POST" action="?controller=producto&action=actualizarCantidad">
+                                                    <input type="hidden" name="id_producto" value="<?= $producto->getID_Producto(); ?>">
+                                                    <input
+                                                        class="cantidad-input"
+                                                        type="number"
+                                                        name="cantidad"
+                                                        value="<?= $producto->getCantidad(); ?>"
+                                                        onchange="this.form.submit()">
+                                                </form>
                                             </td>
-                                            <td class="td-Total text-end">€<?= number_format($producto->totalProducto,2) ?></td> 
+                                            <td class="td-Total text-end">€<?= number_format($producto->totalProducto, 2) ?></td>
                                         </tr>
                                     <?php } ?>
                                 <?php } ?>
@@ -69,7 +79,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <form method="POST" action="?controller=producto&action=finalizarPedido">
                 <div class="container-fluid">
                     <div class="row">
@@ -78,20 +88,20 @@
                             <label for="dedicatoria" class="form-label fw-bold">Añade tu DEDICATORIA especial o comentarios del pedido.</label>
                             <textarea id="dedicatoria" class="form-control" placeholder=""></textarea>
                         </div>
-                   
+
                         <div class="col-lg-6 text-end">
                             <div class="mb-3">
                                 <span class="">Subtotal</span>
-                                <span class="">€<?= number_format($totalCarrito,2) ?></span>
+                                <span class="">€<?= number_format($totalCarrito, 2) ?></span>
                             </div>
                             <div class=" text-muted">
                                 Impuesto incluido. <a href="#" class="text-decoration-none">Los gastos de envío</a> se calculan en la pantalla de pagos.
                             </div>
-                            <input type="submit"  class=" boton-finalizar-compra" value="CONTINUAR CON EL ENVÍO">
+                            <input type="submit" class=" boton-finalizar-compra" value="CONTINUAR CON EL ENVÍO">
                             <div class="d-flex justify-content-end gap-2 ">
                                 <img src="img/BotonShoppay.webp" class="imagenes-tamaño" alt="Shop Pay">
-                                <img  alt="PayPal">
-                                <img  alt="Google Pay">
+                                <img alt="PayPal">
+                                <img alt="Google Pay">
                             </div>
                         </div>
                     </div>

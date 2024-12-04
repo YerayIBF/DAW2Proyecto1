@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.header-contenedor{
+    display: flex;
+    justify-content: center;
+    padding: 21px 38px;
+    
+}
+
+.icono-bolsa{
+    justify-content: end;
+    width: 20px;
+    height: 20px;
+}
+
+*{
+    margin: 0 !important;
+}
