@@ -27,7 +27,7 @@
       <a href="?controller=producto&action=index">INICIO</a>
       <a href="?controller=producto&action=carta">CARTA</a>
       <?php if (isset($_SESSION['usuario']['rol']) && $_SESSION['usuario']['rol'] === 'admin'): ?>
-        <a href="">ADMIN</a>
+        <a href="?controller=producto&action=panelControl">ADMIN</a>
       <?php endif; ?>
     </nav>
 

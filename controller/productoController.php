@@ -5,7 +5,10 @@ include_once("model/usuario.php");
 include_once("model/usuarioDAO.php");
 include_once("model/pedido.php");
 include_once("model/PedidoDAO.php");
-
+include_once("model/oferta.php");
+include_once("model/ofertaDAO.php");
+include_once("model/detallePedido.php");
+include_once("model/detallePedidoDAO.php");
 
 class productoController
 {
@@ -64,17 +67,7 @@ class productoController
         include_once 'view/footer.php';
     }
 
-    public function finalizarPedido()
-    {
-        session_start();
-        header("Location: ?controller=producto&action=paginaPedido");
-    }
-
-    public function paginaPedido()
-    {
-        session_start();
-        include_once 'view/finalizar_pedido.php';
-    }
+   
 
     public function iniciarSession(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -287,6 +280,30 @@ public function quitarProductoCarrito()
     header("Location: ?controller=producto&action=carrito");
     exit();
 }
+
+
+public function paginaFinalizarPedido()
+{
+    session_start();
+    $totalCarrito = 0;
+foreach ($_SESSION['carrito'] as $producto) {
+    $totalCarrito += $producto->getPrecio() * $producto->getCantidad();
+}
+    $_SESSION['totalCarrito'] = $totalCarrito;
+    $_SESSION['dedicatoria'] = $_POST['dedicatoria'] ?? '';
+    include_once 'view/finalizar_pedido.php';
+}
+
+
+public function panelControl()
+{
+    session_start();
+    include_once 'view/panel-control.php';
+
+}
+
+
+
 
 
 

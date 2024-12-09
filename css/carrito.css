@@ -236,6 +236,7 @@ th {
     font-family: 'futura';
     letter-spacing: 2px;
     height: 60px;
+    margin-bottom: 30PX;
 }
 
 .boton-finalizar-compra:hover{
@@ -246,4 +247,41 @@ th {
 .imagenes-tamaño{
     width: 150px;
     height: 44px;
+}
+
+.ajuste-carrito{
+    padding: 17.5px 0px 0px;
+}
+
+.label-dedicatoria{
+    margin: 0px 0px 18px !important;
+    font-size: 15px;
+    font-family: 'futura';
+    color: #333232;
+}
+
+.Subtotal-carrito{
+color: #333232;
+font-family: 'futura';
+font-size: 17px;
+}
+
+.Subtotal-precio-carrito{
+    font-size: 15px;
+    color: #333232;
+    font-family: 'futura';
+    padding:0px 0px 0px 55px;
+}
+
+.a-impuesto-texto{
+    color: #3a3a3a;
+    text-decoration: underline;
+}
+
+.impuesto-texto{
+    color: #333232;
+    font-size: 13px;
+    font-family: 'futura';
+    margin: 0px 0px 25px;
+    padding: 10px 0px 20px;
 }

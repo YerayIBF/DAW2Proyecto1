@@ -20,7 +20,7 @@
         <?php } else { ?>
             <section class="titulo-subtitulo">
                 <h1 class="titulo-carrito">Carrito</h1>
-                <a class="subtitulo-carrito"> Seguir comprando</a>
+                <a class="subtitulo-carrito" href="?controller=producto&action=carta"> Seguir comprando</a>
             </section>
 
             <div class="container-fluid">
@@ -80,29 +80,25 @@
                 </div>
             </div>
 
-            <form method="POST" action="?controller=producto&action=finalizarPedido">
-                <div class="container-fluid">
+            <form method="POST" action="?controller=producto&action=paginaFinalizarPedido">
+                <div class="container-fluid ajuste-carrito">
                     <div class="row">
 
                         <div class="col-lg-6 ">
-                            <label for="dedicatoria" class="form-label fw-bold">Añade tu DEDICATORIA especial o comentarios del pedido.</label>
-                            <textarea id="dedicatoria" class="form-control" placeholder=""></textarea>
+                            <label for="dedicatoria" class="form-label  label-dedicatoria">Añade tu DEDICATORIA especial o comentarios del pedido.</label>
+                            <textarea id="dedicatoria" name="dedicatoria" class="form-control" placeholder=""></textarea>
                         </div>
 
                         <div class="col-lg-6 text-end">
                             <div class="mb-3">
-                                <span class="">Subtotal</span>
-                                <span class="">€<?= number_format($totalCarrito, 2) ?></span>
+                                <span class="Subtotal-carrito">Subtotal</span>
+                                <span class="Subtotal-precio-carrito">€<?= number_format($totalCarrito, 2) ?></span>
                             </div>
-                            <div class=" text-muted">
-                                Impuesto incluido. <a href="#" class="text-decoration-none">Los gastos de envío</a> se calculan en la pantalla de pagos.
+                            <div class=" text-muted impuesto-texto">
+                                Impuesto incluido. <a href="#" class=" a-impuesto-texto">Los gastos de envío</a> se calculan en la pantalla de pagos.
                             </div>
-                            <input type="submit" class=" boton-finalizar-compra" value="CONTINUAR CON EL ENVÍO">
-                            <div class="d-flex justify-content-end gap-2 ">
-                                <img src="img/BotonShoppay.webp" class="imagenes-tamaño" alt="Shop Pay">
-                                <img alt="PayPal">
-                                <img alt="Google Pay">
-                            </div>
+                            <input type="submit" class=" boton-finalizar-compra"  value="CONTINUAR CON EL ENVÍO">
+                           
                         </div>
                     </div>
                 </div>

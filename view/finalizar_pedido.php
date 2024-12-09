@@ -20,13 +20,13 @@
     <form method="POST" action="">
         <label>Direccion</label>
         <input type="text" name="direccion" placeholder="direccion"> 
-        <input type="submit">
+        <input type="submit" value="finalizar pedido">
     </form>
 
     <form method="POST" action="">
         <label>Oferta</label>
         <input type="text" name="Oferta" placeholder="introduce tu cupon"> 
-        <input type="submit">
+        <input type="submit" value="añadir cupon">
     </form>
     </main>
 
