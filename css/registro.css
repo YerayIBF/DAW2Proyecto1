@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'futura';
+    src:url(../fuentes/Futura/Book.ttf);
+    font-weight: 400;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'AdobeCaslonPro';
+    src: url(../fuentes/acaslonpro-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    
+    }
+    
+
+    
+.contenedor {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+ .form-registro {
+    width: 700px;
+    max-width: 700px;
+}
+
+
+.a-registro{
+    text-decoration: none;
+    color: #3a3a3a;
+    font-size: 17px;
+    font-family: 'futura';
+    text-align: center ;
+    font-weight: 100;
+}
+.ajuste-a{
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+} 
+.registro-titulo{
+    align-self: flex-start;
+    font-family: 'AdobeCaslonPro';
+    text-align: center;
+    font-size: 46px;
+    font-weight: 700;
+    color: #3a3a3a;
+}
+
+.label-registro{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: left !important;
+}
+
+.inputs-registro{
+    width: 100%;
+    height: 40px;
+    border: 0.1px solid #3a3a3a;
+}
+
+.boton-registro{
+    border-radius: 60px;
+    width: 250px;
+    text-decoration: none;
+    border: none;
+    height: 60px;
+    color: white;
+    background-color: #0EC289;
+    font-weight: 700;
+    margin-bottom: 20px;
+    
+}
+
+.boton-registro:hover {
+    background-color: #606060;
+}
+.centrar-boton{
+    text-align: center;
+}

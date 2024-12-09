@@ -3,6 +3,9 @@ include_once("model/PlatosDAO.php");
 include_once("model/Platos.php");
 include_once("model/usuario.php");
 include_once("model/usuarioDAO.php");
+include_once("model/pedido.php");
+include_once("model/PedidoDAO.php");
+
 
 class productoController
 {
@@ -86,9 +89,9 @@ class productoController
                     'nombre' => $usuario->getNombre(),
                     'correo' => $usuario->getCorreo(),
                     'rol' => $usuario->getRol()
-                ];
+                ];  
 
-
+                
                 header("Location: ?controller=producto&action=index");
                 exit();
             } else {

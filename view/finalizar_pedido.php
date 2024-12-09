@@ -12,13 +12,24 @@
             <div>
                 <img src="img/Logo.png">   
             </div>
-           <a ><img class="icono-bolsa" src="img/bolso-Carrito.png"></a>  
+            <a ><img class="icono-bolsa" src="img/bolso-Carrito.png"></a>  
         </div>
     </header>
     <hr>
     <main>
+    <form method="POST" action="">
+        <label>Direccion</label>
+        <input type="text" name="direccion" placeholder="direccion"> 
+        <input type="submit">
+    </form>
 
+    <form method="POST" action="">
+        <label>Oferta</label>
+        <input type="text" name="Oferta" placeholder="introduce tu cupon"> 
+        <input type="submit">
+    </form>
     </main>
+
     <footer>
         
     </footer>

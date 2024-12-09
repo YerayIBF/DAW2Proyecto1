@@ -95,10 +95,10 @@ Seccion de productos
 
 
 .plato-img {
-    
-   width: 351px;
-   height: 351px;
+    width: 100%;
+    height: auto; 
 }
+
 
 .btn-anadir {
     font-family: 'futura';
@@ -179,7 +179,9 @@ Seccion2 especialidades
 
 
 .correcionImagen{
-    min-height: 230.33px;
+    width: 100%;
+    height: auto; 
+    min-height: 260.33px;
     max-height: 230.33px;
  
 }
