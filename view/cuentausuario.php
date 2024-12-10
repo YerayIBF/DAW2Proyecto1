@@ -20,7 +20,18 @@
 
                 <div class="col-md-8  ">
                     <h2 class="h2-cuenta margen-h2-cuenta">HISTORIAL DE PEDIDOS</h4>
-                    <p>No ha realizado algún pedido aún.</p>
+                    
+                    <?php if ($pedidos == null){ ?>
+                        <p>No ha realizado algún pedido aún.</p>
+                    <?php } else{ ?>
+                        <?php foreach ($pedidos as $pedido) {?>
+                        <h2>Pedido: </h2>
+                        <h5><?= $pedido->getFecha_Pedido(); ?></h5>
+                        <h5><?= $pedido->getPrecio_Total(); ?></h5>
+                        <h5><?= $pedido->getDireccion(); ?></h5>
+                        <h5><?= $pedido->getDedicatoria(); ?></h5>  
+                    <?php }?>
+                    <?php }?>
                 </div>
 
                 <div class="col-md-4">
