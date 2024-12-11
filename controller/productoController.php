@@ -32,7 +32,7 @@ class productoController
 
         $usuarioId = $_SESSION['usuario']['id'];
         $pedidos = PedidoDAO::obtenerPedidosPorUsuario($usuarioId);
-        
+
         include_once 'view/header.php';
         include_once 'view/cuentausuario.php';
         include_once 'view/footer.php';
@@ -287,72 +287,109 @@ class productoController
     }
 
 
-    public function paginaFinalizarPedido() {
+    public function paginaFinalizarPedido()
+    {
         session_start();
+
+        
+        $subtotal = 0;
+        $cantidadArticulos = 0;
+        $descuento = $_SESSION['descuento'] ?? 0;
+        $codigoCupon = $_SESSION['codigo_oferta'] ?? null;
+        $envio = 0;
+        $impuestoPorcentaje = 21; 
+        $ahorroTotal = 0;
+    
+      
+        if (isset($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $producto) {
+                $subtotal += $producto->getPrecio() * $producto->getCantidad();
+                $cantidadArticulos += $producto->getCantidad();
+            }
+        }
+    
+       
+        $descuentoAplicado = $subtotal * ($descuento / 100);
+        $ahorroTotal = $descuentoAplicado;
+    
+        // Calcular envío
+        if ($subtotal >= 49) {
+            $envio = 0;
+        } else {
+            $envio = 3.99;
+        }
+    
+       
+        $totalSinImpuestos = $subtotal - $descuentoAplicado + $envio;
+    
+      
+        $impuestos = $totalSinImpuestos * ($impuestoPorcentaje / 100);
+    
+       
+        $totalConImpuestos = $totalSinImpuestos + $impuestos;
+    
         if (isset($_POST['dedicatoria'])) {
-            $_SESSION['dedicatoria'] = $_POST['dedicatoria']; 
+            $_SESSION['dedicatoria'] = $_POST['dedicatoria'];
         }
 
         include "view/finalizar_pedido.php";
     }
 
-    public function aplicarCupon() {
+    public function aplicarCupon(){
+        session_start();
         if (isset($_POST['Oferta'])) {
             $codigoCupon = $_POST['Oferta'];
             $oferta = OfertaDAO::obtenerCodigo($codigoCupon);
             if ($oferta && $oferta->getUsos_Disponibles() > 0) {
                 $_SESSION['descuento'] = $oferta->getDescuento(); 
-                $_SESSION['codigo_oferta'] = $codigoCupon; 
-               // echo "Cupón aplicado con éxito: " . $oferta->getDescuento() . "% de descuento.";
-               header("Location: ?controller=producto&action=paginaFinalizarPedido");
+                $_SESSION['codigo_oferta'] = $oferta->getID_Oferta(); 
+                header("Location: ?controller=producto&action=paginaFinalizarPedido");
+                exit();
+            }
             } else {
                 // echo "El cupón no es válido o ya no tiene usos disponibles.";
             }
         }
-    }
-    public function finalizarPedido() {
+    
+    public function finalizarPedido(){
         session_start();
         if (isset($_POST['direccion'])) {
-            $ID_Usuario = $_SESSION['usuario']['id']; 
-            $Fecha_Pedido = date('Y-m-d H:i:s'); 
-            $Direccion = $_POST['direccion']; 
-            $Dedicatoria = isset($_SESSION['dedicatoria']) ? $_SESSION['dedicatoria'] : null; 
-            $codigoOferta = isset($_SESSION['codigo_oferta']) ? $_SESSION['codigo_oferta'] : null; 
-            $Precio_Total = $this->calcularTotalConDescuento($_SESSION['carrito'], $_SESSION['descuento'] ?? 0); 
+            $ID_Usuario = $_SESSION['usuario']['id'];
+            $Direccion = $_POST['direccion'];
+            $Dedicatoria = isset($_SESSION['dedicatoria']) ? $_SESSION['dedicatoria'] : null;
+            $codigoOferta = isset($_SESSION['codigo_oferta']) ? $_SESSION['codigo_oferta'] : null;
+            $Precio_Total = $this->calcularTotalConDescuento($_SESSION['carrito'], $_SESSION['descuento'] ?? 0);
 
-          
-            $pedidoID = PedidoDAO::crearPedido($ID_Usuario, $Fecha_Pedido, $codigoOferta, $Precio_Total, $Direccion, $Dedicatoria,);
-            
-           
+
+            if ($codigoOferta) {
+                OfertaDAO::reducirUsos($codigoOferta);
+            }
+
+
+           $pedidoID = PedidoDAO::crearPedido($ID_Usuario, $Direccion, $Dedicatoria, $codigoOferta, $Precio_Total);
 
             if ($pedidoID) {
-               
+
                 foreach ($_SESSION['carrito'] as $producto) {
                     $productoId = $producto->getID_Producto();
                     $cantidad = $producto->getCantidad();
                     $precioUnitario = $producto->getPrecio();
-    
-                 
                     DetallePedidoDAO::agregarDetalle($pedidoID, $productoId, $cantidad, $precioUnitario);
                 }
-    
-            
-                if ($codigoOferta) {
-                    OfertaDAO::reducirUsos($codigoOferta);
-                }
-    
-              
+
+
                 unset($_SESSION['carrito'], $_SESSION['dedicatoria'], $_SESSION['codigo_oferta'], $_SESSION['descuento']);
+
                 echo "Pedido realizado con éxito. ID del pedido: $pedidoID";
-               
             } else {
                 echo "Hubo un error al realizar el pedido. Inténtelo de nuevo.";
             }
         }
     }
-    
 
-    private function calcularTotalConDescuento($carrito, $descuento) {
+
+    private function calcularTotalConDescuento($carrito, $descuento)
+    {
         $total = 0;
         foreach ($carrito as $producto) {
             $total += $producto->totalProducto;

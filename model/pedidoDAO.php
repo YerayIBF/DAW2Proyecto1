@@ -2,7 +2,8 @@
 include_once("config/database.php");
 include_once("model/pedido.php");
 class PedidoDAO {
-    public static function crearPedido($usuarioId, $direccion, $dedicatoria, $ofertaId, $total) {
+    public static function crearPedido($usuarioId, $direccion, $dedicatoria, $ofertaId, $total)
+    {
         $con = database::connect();
         $fecha = date('Y-m-d H:i:s');
     
@@ -10,6 +11,7 @@ class PedidoDAO {
             INSERT INTO Pedidos (ID_Usuario, Direccion, Dedicatoria, ID_Oferta, Precio_Total, Fecha_Pedido) 
             VALUES (?, ?, ?, ?, ?, ?)
         ");
+        
         $stmt->bind_param('issids', $usuarioId, $direccion, $dedicatoria, $ofertaId, $total, $fecha);
         $stmt->execute();
         $pedidoId = $stmt->insert_id;
@@ -17,6 +19,7 @@ class PedidoDAO {
     
         return $pedidoId;
     }
+    
 
     public static function obtenerPedidosPorUsuario($usuarioId) {
         $db = database::connect(); 
