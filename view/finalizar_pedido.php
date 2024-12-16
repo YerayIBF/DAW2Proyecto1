@@ -44,7 +44,6 @@
                         <input type="text" name="Oferta" placeholder="Añade tu descuento aqui">
                         <button type="submit">Añadir cupón</button>
                     </form>
-
                     <h2>Subtotal • <?= $cantidadArticulos ?> artículos: €<?= number_format($subtotal, 2) ?></h2>
                     <h2>Descuento en pedidos</h2>
                     <h2><?= $codigoCupon ? $codigoCupon : 'Sin cupón' ?></h2>
@@ -61,7 +60,14 @@
                 </div>
             </div>
         </section>
-
+                <?php if (isset($_SESSION['alerta'])): ?>
+            <div class="alert alert-<?= $_SESSION['alerta']['tipo'] ?> alert-dismissible fade show" role="alert">
+                <?= $_SESSION['alerta']['mensaje'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php unset($_SESSION['alerta']); // Eliminar la alerta después de mostrarla ?>
+        <?php endif; ?>
+        
     </main>
 
     <footer>

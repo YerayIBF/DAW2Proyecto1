@@ -6,13 +6,14 @@ class PedidoDAO {
     {
         $con = database::connect();
         $fecha = date('Y-m-d H:i:s');
-    
+        $estado = 'En preparación';
+        
         $stmt = $con->prepare("
-            INSERT INTO Pedidos (ID_Usuario, Direccion, Dedicatoria, ID_Oferta, Precio_Total, Fecha_Pedido) 
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO Pedidos (ID_Usuario, Direccion, Dedicatoria, ID_Oferta, Precio_Total, Fecha_Pedido, Estado) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         ");
         
-        $stmt->bind_param('issids', $usuarioId, $direccion, $dedicatoria, $ofertaId, $total, $fecha);
+        $stmt->bind_param('issidss', $usuarioId, $direccion, $dedicatoria, $ofertaId, $total, $fecha, $estado);
         $stmt->execute();
         $pedidoId = $stmt->insert_id;
         $stmt->close();
@@ -20,6 +21,7 @@ class PedidoDAO {
         return $pedidoId;
     }
     
+
 
     public static function obtenerPedidosPorUsuario($usuarioId) {
         $db = database::connect(); 
@@ -35,6 +37,60 @@ class PedidoDAO {
 
         $stmt->close();
         return $pedidos;
+    }
+
+    public static function obtenerPedidoPorId($pedidoId) {
+        $con = database::connect();
+        $stmt = $con->prepare("SELECT * FROM Pedidos WHERE ID_Pedido = ?");
+        $stmt->bind_param('i', $pedidoId);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        $pedido = $resultado->fetch_object('pedido');
+        $stmt->close();
+    
+        return $pedido;
+    }
+
+
+    public static function ObtenerTodosLosPedidos() {
+        $con = database::connect();
+    
+        $stmt = $con->prepare("SELECT * FROM Pedidos");
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        $pedidos = [];
+        while ($pedido = $resultado->fetch_object('pedido')) {
+            $pedidos[] = $pedido;
+        }
+        $stmt->close();
+    
+        return $pedidos;
+    }
+    
+
+    public static function eliminarPedido($pedidoId) {
+        $con = database::connect();
+
+        $stmtPedido = $con->prepare("DELETE FROM Pedidos WHERE ID_Pedido = ?");
+        $stmtPedido->bind_param('i', $pedidoId);
+        $stmtPedido->execute();
+        $stmtPedido->close();
+    }
+
+
+    public static function editarPedido($pedidoId, $direccion, $dedicatoria, $ofertaId, $total, $estado) {
+        $con = database::connect();
+    
+        $stmt = $con->prepare("
+            UPDATE Pedidos 
+            SET Direccion = ?, Dedicatoria = ?, ID_Oferta = ?, Precio_Total = ?, Estado = ?
+            WHERE ID_Pedido = ?
+        ");
+        $stmt->bind_param('ssidis', $direccion, $dedicatoria, $ofertaId, $total, $pedidoId, $estado);
+        $stmt->execute();
+        $stmt->close();
     }
     
 }

@@ -14,6 +14,8 @@ class pedido {
     
     protected $Dedicatoria;
 
+    protected $Estado;
+
 
     public function __construct() {
 
@@ -157,6 +159,26 @@ class pedido {
     public function setID_Pedido($ID_Pedido)
     {
         $this->ID_Pedido = $ID_Pedido;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Estado
+     */ 
+    public function getEstado()
+    {
+        return $this->Estado;
+    }
+
+    /**
+     * Set the value of Estado
+     *
+     * @return  self
+     */ 
+    public function setEstado($Estado)
+    {
+        $this->Estado = $Estado;
 
         return $this;
     }

@@ -17,10 +17,8 @@
                 <a href="?controller=producto&action=cerrarSession" class="a-cuenta">Cerrar sesión</a>
             </div>
             <div class="row">
-
                 <div class="col-md-8  ">
                     <h2 class="h2-cuenta margen-h2-cuenta">HISTORIAL DE PEDIDOS</h4>
-                    
                     <?php if ($pedidos == null){ ?>
                         <p>No ha realizado algún pedido aún.</p>
                     <?php } else{ ?>
@@ -30,6 +28,7 @@
                         <h5><?= $pedido->getPrecio_Total(); ?></h5>
                         <h5><?= $pedido->getDireccion(); ?></h5>
                         <h5><?= $pedido->getDedicatoria(); ?></h5>  
+                        <h5><?= $pedido->getEstado(); ?></h5>
                     <?php }?>
                     <?php }?>
                 </div>

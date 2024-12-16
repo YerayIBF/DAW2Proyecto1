@@ -359,7 +359,7 @@ class productoController
             $Dedicatoria = isset($_SESSION['dedicatoria']) ? $_SESSION['dedicatoria'] : null;
             $codigoOferta = isset($_SESSION['codigo_oferta']) ? $_SESSION['codigo_oferta'] : null;
             $Precio_Total = $this->calcularTotalConDescuento($_SESSION['carrito'], $_SESSION['descuento'] ?? 0);
-
+            
 
             if ($codigoOferta) {
                 OfertaDAO::reducirUsos($codigoOferta);
