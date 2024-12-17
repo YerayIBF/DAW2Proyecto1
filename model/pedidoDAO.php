@@ -61,7 +61,7 @@ class PedidoDAO {
         $resultado = $stmt->get_result();
     
         $pedidos = [];
-        while ($pedido = $resultado->fetch_object('pedido')) {
+        while ($pedido = $resultado->fetch_assoc(   )) {
             $pedidos[] = $pedido;
         }
         $stmt->close();

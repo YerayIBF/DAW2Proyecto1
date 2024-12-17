@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     async function cargarPedidos() {
         try {
-            const response = await fetch("");
+            const response = await fetch("?controller=api&action=verPedidos");
             if (!response.ok) throw new Error("Error al obtener los pedidos");
             const pedidos = await response.json();
 

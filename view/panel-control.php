@@ -7,35 +7,23 @@
 </head>
 <body>
     <header>
+     <h1>Panel de Administración</h1>
 
+     <a>Usuarios</a>
+     <a href="?controller=api&action=Pedidos">Pedidos</a>
+     <a>Productos</a>
+     <a>Logs</a>
+    
     </header>
     <main>
-    <h1>Panel de Administración</h1>
-    <section id="pedidos">
-        <h2>Pedidos</h2>
-        <table id="tabla-pedidos">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Fecha</th>
-                    <th>Total</th>
-                    <th>Estado</th>
-                    <th>Usuario</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-             
-            </tbody>
-        </table>
-    </section>
-</main>
+  
+    
+    </main>
 
 
     <footer>
 
     </footer>
-    <script src="js/pedidoAdmin.js"></script>
 
 </body>
 </html>
