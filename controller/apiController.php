@@ -13,15 +13,33 @@ include_once("model/detallePedidoDAO.php");
 
 
     class apiController {
-        public function Pedidos(){
-            include_once 'view/pedidoAdmin.php';
+        public function pedidos(){
+            include_once 'view/pedidoAdmin.php';  
+            
         }
+
+        public function usuarios(){
+            include_once 'view/pedidoAdmin.php';  
+            
+        }
+
+        public function productos(){
+            include_once 'view/pedidoAdmin.php';  
+            
+        }
+
+        public function logs(){
+            include_once 'view/pedidoAdmin.php';  
+            
+        }
+        
 
         
         public function verPedidos() {
-           
+            header('Content-Type: application/json');
             $pedidos = PedidoDAO::ObtenerTodosLosPedidos();
             echo json_encode($pedidos);
+            
         }
         
     }
