@@ -13,10 +13,14 @@ include_once("model/detallePedidoDAO.php");
 
 
     class apiController {
+
+
         public function pedidos(){
             include_once 'view/pedidoAdmin.php';  
             
         }
+
+      
 
         public function usuarios(){
             include_once 'view/pedidoAdmin.php';  
@@ -33,7 +37,6 @@ include_once("model/detallePedidoDAO.php");
             
         }
         
-
         
         public function verPedidos() {
             header('Content-Type: application/json');

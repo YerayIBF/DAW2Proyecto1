@@ -70,13 +70,17 @@ class PedidoDAO {
     }
     
 
-    public static function eliminarPedido($pedidoId) {
+    public static function eliminarPedido($idPedido) {
         $con = database::connect();
 
-        $stmtPedido = $con->prepare("DELETE FROM Pedidos WHERE ID_Pedido = ?");
-        $stmtPedido->bind_param('i', $pedidoId);
-        $stmtPedido->execute();
-        $stmtPedido->close();
+        $stmt = $con->prepare("DELETE FROM pedidos WHERE ID_Pedido = ?");
+        $stmt->bind_param("i", $idPedido);
+    
+        $resultado = $stmt->execute();
+        $stmt->close();
+        $con->close();
+    
+        return $resultado;
     }
 
 

@@ -11,7 +11,6 @@
     <div class="sidebar">
         <h1>Panel de Administración</h1>
         <nav>
-            <a href="" link="inicio">Inicio</a>
             <a href="" link="usuarios">Usuarios</a>
             <a href="" link="pedidos">Pedidos</a>
             <a href="" link="productos">Productos</a>
