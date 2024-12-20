@@ -25,13 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         pedidosSection.innerHTML = "";
                     }
 
-                    
-                    const script = document.createElement("script");
-                   script.src = ('js/pedidoAdmin.js');
-                    script.onload = () => {
+             
+                    if (!document.querySelector(`script[src="js/pedidoAdmin.js"]`)) {
+                        const script = document.createElement("script");
+                        script.src = "js/pedidoAdmin.js";
+                        script.onload = async () => {
+                            const pedidoAdmin = new PedidoAdmin();
+                            await pedidoAdmin.init();
+                        };
+                        document.body.appendChild(script);
+                    } else {
+                        const pedidoAdmin = new PedidoAdmin();
+                        await pedidoAdmin.init();
+                    }
                       
-                    };
-                    document.body.appendChild(script);
                 }
             } catch (error) {
                 console.error("Error al cargar la vista:", error);
