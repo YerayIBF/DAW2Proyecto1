@@ -23,21 +23,25 @@ class DetallePedidoDAO {
         $resultado = $stmt->get_result();
     
         $detalles = [];
-        while ($detalle = $resultado->fetch_object('detallePedido')) {
+        while ($detalle = $resultado->fetch_assoc()) {
             $detalles[] = $detalle;
         }
         $stmt->close();
     
         return $detalles;
     }
-    public static function eliminarDetalle($detalleId) {
+    public static function eliminarDetallesPorPedido($pedidoId) {
         $con = database::connect();
     
-        $stmt = $con->prepare("DELETE FROM DetallePedido WHERE ID_DetallePedido = ?");
-        $stmt->bind_param('i', $detalleId);
-        $stmt->execute();
+        $stmt = $con->prepare("DELETE FROM DetallePedido WHERE ID_Pedido = ?");
+        $stmt->bind_param('i', $pedidoId);
+        $resultado = $stmt->execute();
         $stmt->close();
+        $con->close();
+    
+        return $resultado;
     }
+    
     
     public static function editarDetalle($detalleId, $cantidad, $precioUnitario) {
         $con = database::connect();

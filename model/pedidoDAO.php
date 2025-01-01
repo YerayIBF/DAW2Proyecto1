@@ -56,12 +56,14 @@ class PedidoDAO {
     public static function ObtenerTodosLosPedidos() {
         $con = database::connect();
     
-        $stmt = $con->prepare("SELECT * FROM Pedidos");
+        $stmt = $con->prepare("
+            SELECT * FROM Pedidos 
+        ");
         $stmt->execute();
         $resultado = $stmt->get_result();
     
         $pedidos = [];
-        while ($pedido = $resultado->fetch_assoc(   )) {
+        while ($pedido = $resultado->fetch_assoc()) {
             $pedidos[] = $pedido;
         }
         $stmt->close();
@@ -72,29 +74,40 @@ class PedidoDAO {
 
     public static function eliminarPedido($idPedido) {
         $con = database::connect();
-
-        $stmt = $con->prepare("DELETE FROM pedidos WHERE ID_Pedido = ?");
-        $stmt->bind_param("i", $idPedido);
     
+        $stmt = $con->prepare("DELETE FROM Pedidos WHERE ID_Pedido = ?");
+        $stmt->bind_param("i", $idPedido);
         $resultado = $stmt->execute();
         $stmt->close();
         $con->close();
     
         return $resultado;
     }
+    
 
 
+ 
     public static function editarPedido($pedidoId, $direccion, $dedicatoria, $ofertaId, $total, $estado) {
         $con = database::connect();
     
         $stmt = $con->prepare("
             UPDATE Pedidos 
-            SET Direccion = ?, Dedicatoria = ?, ID_Oferta = ?, Precio_Total = ?, Estado = ?
+            SET Direccion = ?, 
+                Dedicatoria = ?, 
+                ID_Oferta = ?, 
+                Precio_Total = ?, 
+                Estado = ?
             WHERE ID_Pedido = ?
         ");
-        $stmt->bind_param('ssidis', $direccion, $dedicatoria, $ofertaId, $total, $pedidoId, $estado);
-        $stmt->execute();
+        
+       
+        $stmt->bind_param('ssidsi', $direccion, $dedicatoria, $ofertaId, $total, $estado, $pedidoId);
+        
+        $resultado = $stmt->execute();
         $stmt->close();
+        
+        return $resultado;
     }
-    
 }
+    
+

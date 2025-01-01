@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control</title>
     <link rel="stylesheet" href="css/panel_control.css">
-    <link rel="stylesheet" href="css/tablas_admin.css">
+    <link rel="stylesheet" href="css/ContenidoAdmin.css">
 </head>
 <body>
     <div class="sidebar">
@@ -14,7 +14,9 @@
             <a href="" link="usuarios">Usuarios</a>
             <a href="" link="pedidos">Pedidos</a>
             <a href="" link="productos">Productos</a>
+            <a href="" link="ofertas">Ofertas</a>
             <a href="" link="logs">Logs</a>
+            <a href="?controller=producto&action=index" id="btn-volver">volver</a>
         </nav>
     </div>
     <div class="main-content">
@@ -25,7 +27,7 @@
          
          </main>
         <footer>
-            <p>&copy; 2024 Panel de Administración</p>
+            <p>&copy;2025 Panel de Administración</p>
         </footer>
     </div>
    <script src="js/main.js"></script>
