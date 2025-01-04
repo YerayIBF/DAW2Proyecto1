@@ -212,28 +212,34 @@ class PedidoAdmin {
         let pedidosFiltrados = this.pedidosData.filter(pedido => {
             const cumpleId = !this.filtros.id ||
                 pedido.ID_Pedido.toString().includes(this.filtros.id);
-
+    
             const cumpleUsuario = !this.filtros.usuario ||
                 pedido.ID_Usuario.toString().includes(this.filtros.usuario);
-
+    
             const cumpleFecha = !this.filtros.fecha ||
                 pedido.Fecha_Pedido.includes(this.filtros.fecha);
-
+    
             const cumplePrecio = !this.filtros.precio ||
                 parseFloat(pedido.Precio_Total) >= parseFloat(this.filtros.precio);
-
+    
             const cumpleEstado = !this.filtros.estado ||
                 pedido.Estado.toLowerCase() === this.filtros.estado.toLowerCase();
-
-            const cumpleOferta = !this.filtros.oferta ||
-                (pedido.ID_Oferta && pedido.ID_Oferta.toString().includes(this.filtros.oferta));
-
+    
+         
+            const cumpleOferta = !this.filtros.oferta || 
+                (this.filtros.oferta.toLowerCase() === 'sin oferta' ? 
+                    !pedido.ID_Oferta || pedido.ID_Oferta === null || pedido.ID_Oferta === '' : 
+                    (pedido.ID_Oferta && pedido.ID_Oferta.toString().includes(this.filtros.oferta)));
+    
             const cumpleDireccion = !this.filtros.direccion ||
                 (pedido.Direccion && pedido.Direccion.toLowerCase().includes(this.filtros.direccion));
+    
 
-            const cumpleDedicatoria = !this.filtros.dedicatoria ||
-                (pedido.Dedicatoria && pedido.Dedicatoria.toLowerCase().includes(this.filtros.dedicatoria));
-
+            const cumpleDedicatoria = !this.filtros.dedicatoria || 
+                (this.filtros.dedicatoria.toLowerCase() === 'sin dedicatoria' ? 
+                    !pedido.Dedicatoria || pedido.Dedicatoria === null || pedido.Dedicatoria === '' : 
+                    (pedido.Dedicatoria && pedido.Dedicatoria.toLowerCase().includes(this.filtros.dedicatoria)));
+    
             return cumpleId && cumpleUsuario && cumpleFecha && cumplePrecio &&
                 cumpleEstado && cumpleOferta && cumpleDireccion && cumpleDedicatoria;
         });
@@ -316,7 +322,9 @@ class PedidoAdmin {
         // Estado - convertir a select
         celdas[3].innerHTML = this.renderEstadoSelect(pedido.Estado, true);
 
-        // Usuario - mantener igual
+        // Usuario - convertir a input type number
+
+        celdas[4].innerHTML = `<input type="number" class="form-control" value="${pedido.ID_Usuario}" min="7" />`;
 
         // Oferta - convertir a input number
         celdas[5].innerHTML = `<input type="number" class="form-control" value="${pedido.ID_Oferta || ''}" min="0" />`;
@@ -341,62 +349,90 @@ class PedidoAdmin {
         btnCancelar.addEventListener('click', () => this.cancelarEdicion(id));
     }
 
-    initCrearPedidoFormulario() {
-        const btnCrearPedido = this.pedidosSection.querySelector('#btn-crear-pedido');
-        const formCrearPedido = this.pedidosSection.querySelector('#form-crear-pedido');
-        const formulario = this.pedidosSection.querySelector('#pedido-form');
-        const btnCancelarCrear = this.pedidosSection.querySelector('#btn-cancelar-crear');
+   initCrearPedidoFormulario() {
+    const btnCrearPedido = this.pedidosSection.querySelector('#btn-crear-pedido');
+    const formCrearPedido = this.pedidosSection.querySelector('#form-crear-pedido');
+    const formulario = this.pedidosSection.querySelector('#pedido-form');
+    const btnCancelarCrear = this.pedidosSection.querySelector('#btn-cancelar-crear');
 
-        btnCrearPedido.addEventListener('click', () => {
-            formCrearPedido.style.display = 'block';
-            btnCrearPedido.style.display = 'none';
-        });
-
-        btnCancelarCrear.addEventListener('click', () => {
-            formCrearPedido.style.display = 'none';
-            btnCrearPedido.style.display = 'block';
-            formulario.reset();
-        });
-
-        formulario.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const nuevoPedido = {
-                ID_Usuario: document.querySelector('#usuario-id').value,
-                Direccion: document.querySelector('#direccion').value,
-                Dedicatoria: document.querySelector('#dedicatoria').value,
-                ID_Oferta: document.querySelector('#oferta-id').value || null,
-                Precio_Total: document.querySelector('#precio-total').value
-            };
-
-            try {
-                const response = await fetch('?controller=api&action=crearPedido', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(nuevoPedido)
-                });
-
-                if (!response.ok) throw new Error('Error al crear el pedido');
-
-                const resultado = await response.json();
-
-                if (resultado.success) {
-                    alert('Pedido creado correctamente');
-                    formCrearPedido.style.display = 'none';
-                    btnCrearPedido.style.display = 'block';
-                    formulario.reset();
-                    await this.cargarPedidos();
-                } else {
-                    throw new Error(resultado.message || 'Error al crear el pedido');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al crear el pedido: ' + error.message);
-            }
+   
+    const savedFormData = localStorage.getItem('pedidoFormData');
+    if (savedFormData) {
+        const formData = JSON.parse(savedFormData);
+        Object.keys(formData).forEach(key => {
+            const input = formulario.querySelector(`#${key}`);
+            if (input) input.value = formData[key];
         });
     }
+
+    
+    formulario.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            const formData = {
+                'usuario-id': formulario.querySelector('#usuario-id').value,
+                'direccion': formulario.querySelector('#direccion').value,
+                'dedicatoria': formulario.querySelector('#dedicatoria').value,
+                'oferta-id': formulario.querySelector('#oferta-id').value,
+                'precio-total': formulario.querySelector('#precio-total').value
+            };
+            localStorage.setItem('pedidoFormData', JSON.stringify(formData));
+        });
+    });
+
+    btnCrearPedido.addEventListener('click', () => {
+        formCrearPedido.style.display = 'block';
+        btnCrearPedido.style.display = 'none';
+    });
+
+    btnCancelarCrear.addEventListener('click', () => {
+        if (confirm('¿Desea borrar los datos guardados del formulario?')) {
+            localStorage.removeItem('pedidoFormData');
+            formulario.reset();
+        }
+        formCrearPedido.style.display = 'none';
+        btnCrearPedido.style.display = 'block';
+    });
+
+    formulario.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const nuevoPedido = {
+            ID_Usuario: document.querySelector('#usuario-id').value,
+            Direccion: document.querySelector('#direccion').value,
+            Dedicatoria: document.querySelector('#dedicatoria').value,
+            ID_Oferta: document.querySelector('#oferta-id').value || null,
+            Precio_Total: document.querySelector('#precio-total').value
+        };
+
+        try {
+            const response = await fetch('?controller=api&action=crearPedido', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(nuevoPedido)
+            });
+
+            if (!response.ok) throw new Error('Error al crear el pedido');
+
+            const resultado = await response.json();
+
+            if (resultado.success) {
+                alert('Pedido creado correctamente');
+                localStorage.removeItem('pedidoFormData'); 
+                formCrearPedido.style.display = 'none';
+                btnCrearPedido.style.display = 'block';
+                formulario.reset();
+                await this.cargarPedidos();
+            } else {
+                throw new Error(resultado.message || 'Error al crear el pedido');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al crear el pedido: ' + error.message);
+        }
+    });
+}
 
     async cargarPedidos() {
         try {
@@ -459,24 +495,27 @@ class PedidoAdmin {
     async guardarCambios(id) {
         const fila = this.tablaPedidos.querySelector(`tr[data-id="${id}"]`);
         if (!fila) return;
-
+    
         const fecha = fila.querySelector('input[type="date"]').value;
-        const precio = fila.querySelector('input[type="number"]').value;
+        const precio = parseFloat(fila.querySelector('input[type="number"]').value);
         const estado = fila.querySelector('select.estado-select').value;
-        const oferta = fila.querySelectorAll('input[type="number"]')[1].value;
+        const usuario = parseInt(fila.querySelector('td:nth-child(5) input[type="number"]').value);
+        const ofertaInput = fila.querySelector('td:nth-child(6) input[type="number"]');
+        const oferta = ofertaInput && ofertaInput.value ? parseInt(ofertaInput.value) : null;
         const direccion = fila.querySelector('input[type="text"]').value;
         const dedicatoria = fila.querySelector('textarea').value;
-
+    
         const datosActualizados = {
-            ID_Pedido: id,
+            ID_Pedido: parseInt(id),
             Fecha_Pedido: fecha,
             Precio_Total: precio,
             Estado: estado,
-            ID_Oferta: oferta || null,
+            ID_Usuario: usuario,
+            ID_Oferta: oferta,
             Direccion: direccion,
             Dedicatoria: dedicatoria
         };
-
+    
         try {
             const response = await fetch('?controller=api&action=actualizarPedido', {
                 method: 'PUT',
@@ -485,18 +524,18 @@ class PedidoAdmin {
                 },
                 body: JSON.stringify(datosActualizados)
             });
-
-            if (!response.ok) throw new Error('Error al actualizar el pedido');
-
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error al actualizar el pedido');
+            }
+    
             const resultado = await response.json();
-
+    
             if (resultado.success) {
                 alert('Pedido actualizado correctamente');
                 this.editandoFilas.delete(id);
-
-                // Guardamos el último pedido editado en localStorage
                 localStorage.setItem('ultimoPedidoEditado', JSON.stringify(datosActualizados));
-
                 await this.cargarPedidos();
             } else {
                 throw new Error(resultado.message || 'Error al actualizar el pedido');

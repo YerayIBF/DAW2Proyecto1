@@ -24,7 +24,7 @@
             <h2>Bienvenido al Panel</h2>
         </header>
         <main id="dynamic-content">
-         
+
          </main>
         <footer>
             <p>&copy;2025 Panel de Administración</p>

@@ -16,7 +16,7 @@
             <div>
                 <img src="img/Logo.png">
             </div>
-            <a><img class="icono-bolsa" src="img/bolso-Carrito.png"></a>
+            <a href="?controller=producto&action=carta"><img class="icono-bolsa" src="img/bolso-Carrito.png"></a>
         </div>
     </header>
     <hr>
@@ -24,10 +24,31 @@
         <section class="container-fluid my-5">
             <div class="row">
                 <div class="col-md-6 d-flex flex-column">
+                    <h2>Entrega</h2>
                     <form method="POST" action="?controller=producto&action=finalizarPedido">
-                     
-                        <input type="text" name="direccion" placeholder="Introduce tu dirección">
-                        <button type="submit">Finalizar pedido</button>
+                        <select class="PaisSelect">
+                            <option>España</option>
+                            <option>Portugal</option>
+                        </select><br>
+                        <input type="text" class="inputNombre" name="nombre" placeholder="nombre" required> 
+                        <input type="text" name="apellido" placeholder="apellido" required><br>
+                        <input type="text" name="direccion" placeholder="Dirección" required>
+                           <p><img width="20px" height="20px" src="img/info.svg">Agrega un número de domicilio si lo tienes</p>
+                        <input type="text" name="vivienda" placeholder="Casa, apartamento, etc. (opcional)"><br>
+                        <input type="text" name="codigoP" placeholder="Código postal" requierd>
+                        <input type="text" name="ciudad" placeholder="Ciudad" requierd>
+                        <input type="text" name="provincia/estado" placeholder="Provincia/Estado" requierd><br>
+                        <input type="telefono" name="teléfono" placeholder="Teléfono" requierd> 
+                       
+
+
+                        <h2>pago</h2>
+                        <P>Todas las transacciones son seguras y están encriptadas.</P>
+                        <input placeholder="Número de tarjeta" name="numeroTarjeta" requierd><br>
+                        <input placeholder="Fecha de vencimiento (MM / AA)" name="FechaV" requierd>
+                        <input placeholder="Código de seguridad" name="CodigoSeguridad" requierd><br>
+                        <input placeholder="Nombre del titular" name="numeroTarjeta" requierd><br>
+                        <button type="submit">Realizar pago</button>
                     </form>
                 </div>
 
@@ -36,13 +57,14 @@
                     <?php foreach ($_SESSION['carrito'] as $producto) { ?>
                         <div class="">
                             <img class="img-finalizar-compra" src="img/<?= $producto->getImagen(); ?>" alt="<?= $producto->getNombre(); ?>">
-                            <p class="">€<?= $producto->getPrecio() ?></p>
+                            <p class="">€<?= $producto->getPrecio(); ?></p>
+                            <p class=""><?= $producto->getCantidad(); ?></p>
                         </div>
                         <?php }?>
                     <?php }?>
                     <form method="POST" action="?controller=producto&action=aplicarCupon">
                         <input type="text" name="Oferta" placeholder="Añade tu descuento aqui">
-                        <button type="submit">Añadir cupón</button>
+                        <button type="submit">APLICAR</button>
                     </form>
                     <h2>Subtotal • <?= $cantidadArticulos ?> artículos: €<?= number_format($subtotal, 2) ?></h2>
                     <h2>Descuento en pedidos</h2>

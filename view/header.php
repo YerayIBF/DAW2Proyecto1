@@ -107,7 +107,7 @@
   </section>
 
   <script src="js/panelCompra.js"></script>
-  
+ 
 </body>
 
 </html>

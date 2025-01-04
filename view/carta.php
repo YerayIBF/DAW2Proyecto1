@@ -22,7 +22,10 @@
                     <div class="col-md-3">
                         <div class="plato-card text-center">
                             <img src="img/<?= htmlspecialchars($producto->getImagen()); ?>" class="plato-img" alt="<?= htmlspecialchars($producto->getNombre()); ?>">
-                            <button class="btn-anadir">VER PRODUCTO</button>
+                            <form action="?controller=producto&action=addProducto" method="POST">
+                                <input type="hidden" name="ID_Producto" value="<?= $producto->getID_Producto(); ?>">
+                                <button type="submit" class="btn-anadir">AÑADIR AL CARRITO</button>
+                            </form>
                         </div>
                         <div class="texto-producto">
                             <h5><?= htmlspecialchars($producto->getNombre()); ?></h5>

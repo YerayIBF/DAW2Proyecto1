@@ -185,6 +185,9 @@ table.empty {
     padding: 10px;
 }
 
+
+
+
 .filtros-container button:hover{
     background-color: #606060;
     
@@ -284,3 +287,105 @@ table.empty {
     margin: 5px 0px 20px 0px;
     
 }
+
+
+#btn-crear-usuario {
+    background-color: #0EC289;
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+    font-size: 18px;
+    border: none;
+    padding: 20px;
+    margin: 20px 0px 20px 0px;
+}
+
+#btn-crear-usuario:hover {
+    cursor: pointer;
+    background-color: #606060;
+}
+
+
+#form-crear-usuario input  {
+    width: 400px;
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 20px 0px;
+    
+}
+
+#form-crear-usuario textarea {
+    width: 200px;
+    padding: 0px 200px 100px 0px;
+    margin: 5px 0px 20px 0px;
+    
+}
+
+
+#form-crear-usuario select {
+   width: 200px;
+    padding: 10px 0px 10px;
+    margin: 5px 0px 20px 0px;
+}
+
+
+
+
+#btn-crear-producto {
+    background-color: #0EC289;
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+    font-size: 18px;
+    border: none;
+    padding: 20px;
+    margin: 20px 0px 20px 0px;
+}
+
+#btn-crear-producto:hover {
+    cursor: pointer;
+    background-color: #606060;
+}
+
+
+#form-crear-producto input  {
+    width: 400px;
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 20px 0px;
+    
+}
+
+#form-crear-producto textarea {
+    width: 200px;
+    padding: 0px 200px 100px 0px;
+    margin: 5px 0px 20px 0px;
+    
+}
+
+
+#btn-crear-detalle {
+    background-color: #0EC289;
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+    font-size: 18px;
+    border: none;
+    padding: 20px;
+    margin: 20px 0px 20px 0px;
+}
+
+#btn-crear-detalle:hover {
+    cursor: pointer;
+    background-color: #606060;
+}
+
+
+#form-crear-detalle input  {
+    width: 400px;
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 20px 0px;
+    
+}
+
+
+
+

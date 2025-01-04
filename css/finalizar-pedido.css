@@ -16,8 +16,12 @@
 .header-contenedor{
     display: flex;
     justify-content: center;
-    padding: 21px 38px;
-    
+    padding: 50px 38px 50px 0px;
+   
+}
+
+hr {
+    margin: 0px !important;
 }
 
 .icono-bolsa{
@@ -27,12 +31,10 @@
 }
 
 
-*{
-    margin: 0 !important;
-    padding: 0 !important;
-}
+
 
 .img-finalizar-compra{
     width: 80px;
     height: 60px;
 }
+

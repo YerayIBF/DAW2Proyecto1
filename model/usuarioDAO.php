@@ -21,6 +21,40 @@ class UsuarioDAO {
         }
     }
 
+    public static function obtenerTodosUsuarios() {
+        $con = database::connect();
+        $query = "SELECT ID_Usuario, Nombre, Correo, Rol FROM Usuarios";
+        $resultado = $con->query($query);
+        
+        $usuarios = [];
+        while ($row = $resultado->fetch_assoc()) {
+            $usuarios[] = $row;
+        }
+        return $usuarios;
+    }
+
+    public static function actualizarUsuario($id, $nombre, $correo, $rol) {
+        $con = database::connect();
+        $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=? WHERE ID_Usuario=?");
+        
+        if ($stmt) {
+            $stmt->bind_param("sssi", $nombre, $correo, $rol, $id);
+            return $stmt->execute();
+        }
+        return false;
+    }
+
+    public static function eliminarUsuario($id) {
+        $con = database::connect();
+        $stmt = $con->prepare("DELETE FROM Usuarios WHERE ID_Usuario = ?");
+        
+        if ($stmt) {
+            $stmt->bind_param("i", $id);
+            return $stmt->execute();
+        }
+        return false;
+    }
+
     public static function autenticarUsuario($correo, $contraseña) {
         $con = database::connect();
         $stmt = $con->prepare("SELECT * FROM Usuarios WHERE Correo = ?");
@@ -39,6 +73,8 @@ class UsuarioDAO {
         return null; 
         
     }
+
+    
     
 
 }

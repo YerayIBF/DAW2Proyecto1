@@ -26,7 +26,7 @@
              
                 <input class="boton-login" type="submit" value="REGISTRARSE">
                 <br>
-                <a href="?controller=producto&action=registrarte" class="a-login">Crear cuenta</a>
+                <a href="?controller=producto&action=registrarte" class="a-login mb-3 ">Crear cuenta</a>
             </div>
         </form>
     </section>

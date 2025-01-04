@@ -117,6 +117,7 @@ body {
 }
 
 
+
 .titulo-panel{
   font-family: 'AdobeCaslonPro';
   font-size: 30px;
@@ -183,6 +184,8 @@ body {
   color: #BDBDBD;
   padding: 0px 0px 6PX;
 }
+
+
 
 #fondo-oscuro {
   display: none;

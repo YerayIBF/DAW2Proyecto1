@@ -15,7 +15,7 @@
             <section class="No-Productos">
                 <h1 class="titulo-carrito-seguir">Carrito</h1>
                 <p class="subtitulo-seguir">Su carrito actualmente está vacío.</p>
-                <a><button class="boton-seguir">SEGUIR COMPRANDO -></button></a>
+                <a href="?controller=producto&action=carta"><button class="boton-seguir">SEGUIR COMPRANDO -></button></a>
             </section>
         <?php } else { ?>
             <section class="titulo-subtitulo">

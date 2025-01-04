@@ -1,36 +1,38 @@
 <?php
 include_once("config/database.php");
 include_once("model/pedido.php");
-class PedidoDAO {
+class PedidoDAO
+{
     public static function crearPedido($usuarioId, $direccion, $dedicatoria, $ofertaId, $total)
     {
         $con = database::connect();
         $fecha = date('Y-m-d H:i:s');
         $estado = 'En preparación';
-        
+
         $stmt = $con->prepare("
             INSERT INTO Pedidos (ID_Usuario, Direccion, Dedicatoria, ID_Oferta, Precio_Total, Fecha_Pedido, Estado) 
             VALUES (?, ?, ?, ?, ?, ?, ?)
         ");
-        
+
         $stmt->bind_param('issidss', $usuarioId, $direccion, $dedicatoria, $ofertaId, $total, $fecha, $estado);
         $stmt->execute();
         $pedidoId = $stmt->insert_id;
         $stmt->close();
-    
+
         return $pedidoId;
     }
-    
 
 
-    public static function obtenerPedidosPorUsuario($usuarioId) {
-        $db = database::connect(); 
+
+    public static function obtenerPedidosPorUsuario($usuarioId)
+    {
+        $db = database::connect();
         $stmt = $db->prepare("SELECT * FROM Pedidos WHERE ID_Usuario = ?");
-        $stmt->bind_param('i', $usuarioId); 
+        $stmt->bind_param('i', $usuarioId);
         $stmt->execute();
         $resultado = $stmt->get_result();
 
-        $pedidos=[];
+        $pedidos = [];
         while ($pedido = $resultado->fetch_object('pedido')) {
             $pedidos[] = $pedido;
         }
@@ -39,75 +41,69 @@ class PedidoDAO {
         return $pedidos;
     }
 
-    public static function obtenerPedidoPorId($pedidoId) {
+    public static function obtenerPedidoPorId($pedidoId)
+    {
         $con = database::connect();
         $stmt = $con->prepare("SELECT * FROM Pedidos WHERE ID_Pedido = ?");
         $stmt->bind_param('i', $pedidoId);
         $stmt->execute();
         $resultado = $stmt->get_result();
-    
+
         $pedido = $resultado->fetch_object('pedido');
         $stmt->close();
-    
+
         return $pedido;
     }
 
 
-    public static function ObtenerTodosLosPedidos() {
+    public static function ObtenerTodosLosPedidos()
+    {
         $con = database::connect();
-    
+
         $stmt = $con->prepare("
             SELECT * FROM Pedidos 
         ");
         $stmt->execute();
         $resultado = $stmt->get_result();
-    
+
         $pedidos = [];
         while ($pedido = $resultado->fetch_assoc()) {
             $pedidos[] = $pedido;
         }
         $stmt->close();
-    
+
         return $pedidos;
     }
-    
 
-    public static function eliminarPedido($idPedido) {
+    public static function eliminarPedido($idPedido)
+    {
         $con = database::connect();
-    
+
         $stmt = $con->prepare("DELETE FROM Pedidos WHERE ID_Pedido = ?");
         $stmt->bind_param("i", $idPedido);
         $resultado = $stmt->execute();
         $stmt->close();
         $con->close();
-    
+
         return $resultado;
     }
-    
 
-
- 
-    public static function editarPedido($pedidoId, $direccion, $dedicatoria, $ofertaId, $total, $estado) {
+    public static function editarPedido($pedidoId, $direccion, $usuarioId, $dedicatoria, $ofertaId, $total, $estado)
+    {
         $con = database::connect();
-    
         $stmt = $con->prepare("
             UPDATE Pedidos 
             SET Direccion = ?, 
+                ID_Usuario = ?,
                 Dedicatoria = ?, 
                 ID_Oferta = ?, 
                 Precio_Total = ?, 
                 Estado = ?
             WHERE ID_Pedido = ?
         ");
-        
-       
-        $stmt->bind_param('ssidsi', $direccion, $dedicatoria, $ofertaId, $total, $estado, $pedidoId);
-        
+        $stmt->bind_param('sisidsi', $direccion, $usuarioId, $dedicatoria, $ofertaId, $total, $estado, $pedidoId);
         $resultado = $stmt->execute();
         $stmt->close();
-        
         return $resultado;
     }
 }
-    
-

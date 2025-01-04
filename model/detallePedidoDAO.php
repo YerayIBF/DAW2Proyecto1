@@ -32,13 +32,11 @@ class DetallePedidoDAO {
     }
     public static function eliminarDetallesPorPedido($pedidoId) {
         $con = database::connect();
-    
         $stmt = $con->prepare("DELETE FROM DetallePedido WHERE ID_Pedido = ?");
         $stmt->bind_param('i', $pedidoId);
         $resultado = $stmt->execute();
         $stmt->close();
         $con->close();
-    
         return $resultado;
     }
     
@@ -82,6 +80,7 @@ class DetallePedidoDAO {
         $stmt->close();
     }
 
+   
 
     
     

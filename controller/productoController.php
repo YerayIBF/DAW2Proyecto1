@@ -14,7 +14,6 @@ class productoController
 {
     public function index()
     {
-
         session_start();
         $productos = platosDAO::getAll();
         include_once 'view/header.php';

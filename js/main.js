@@ -19,19 +19,95 @@ document.addEventListener("DOMContentLoaded", () => {
                 dynamicContent.innerHTML = html;
 
                 if (view === "ofertas") {
-                    if (!document.querySelector(`script[src="js/ofertaAdmin.js"]`)) {
+                    const ofertasSection = document.querySelector("#ofertas");
+                    if (ofertasSection) {
+                        ofertasSection.innerHTML = "";
+
+                    } if (!document.querySelector(`script[src="js/ofertaAdmin.js"]`)) {
                         const script = document.createElement("script");
                         script.src = "js/ofertaAdmin.js";
                         script.onload = async () => {
-                            const admin = new ofertaAdmin();
-                            await admin.init();
+                            const ofertaAdmin = new OfertaAdmin();
+                            await ofertaAdmin.init();
                         };
                         document.body.appendChild(script);
                     } else {
-                        const admin = new ofertaAdmin();
-                        await admin.init();
+                        const ofertaAdmin = new OfertaAdmin();
+                        await ofertaAdmin.init();
                     }
                 }
+
+                if (view === "logs") {
+                    const logsSection = document.querySelector("#logs");
+                    if (logsSection) {
+                        logsSection.innerHTML = "";
+
+                    } if (!document.querySelector(`script[src="js/logAdmin.js"]`)) {
+                        const script = document.createElement("script");
+                        script.src = "js/logAdmin.js";
+                        script.onload = async () => {
+                            const logAdmin = new LogsAdmin();
+                            await logAdmin.init();
+                        };
+                        document.body.appendChild(script);
+                    } else {
+                        const logAdmin = new LogsAdmin();
+                        await logAdmin.init();
+                    }
+                }
+                
+
+                if (view === "usuarios") {
+                    const usuariosSection = document.querySelector("#usuarios");
+                    if (usuariosSection) {
+                    
+                        usuariosSection.innerHTML = "";
+                    }
+
+                    if (!document.querySelector(`script[src="js/usuarioAdmin.js"]`)) {
+                        const script = document.createElement("script");
+                        script.src = "js/usuarioAdmin.js";
+                        script.onload = async () => {
+                            const usuarioAdmin = new UsuarioAdmin();
+                            await usuarioAdmin.init();
+                        };
+                        document.body.appendChild(script);
+                    } else {
+                        const usuarioAdmin = new UsuarioAdmin();
+                        await usuarioAdmin.init();
+                    }
+                }
+
+
+                if (view === "productos") {
+
+                    if (!document.querySelector(`script[src="js/currencyConverter.js"]`)) {
+                        const currencyScript = document.createElement("script");
+                        currencyScript.src = "js/currencyConverter.js";
+                        document.body.appendChild(currencyScript);
+                    }
+                    const productosSection = document.querySelector("#productos");
+                    if (productosSection) {
+                    
+                        productosSection.innerHTML = "";
+                    }
+
+                    if (!document.querySelector(`script[src="js/productoAdmin.js"]`)) {
+                        const script = document.createElement("script");
+                        script.src = "js/productoAdmin.js";
+                        script.onload = async () => {
+                            const productoAdmin = new ProductoAdmin();
+                            await productoAdmin.init();
+                        };
+                        document.body.appendChild(script);
+                    } else {
+                        const productoAdmin = new ProductoAdmin();
+                        await productoAdmin.init();
+                    }
+                }
+
+                
+                
 
                 if (view === "pedidos") {
 
