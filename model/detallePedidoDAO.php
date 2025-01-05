@@ -10,8 +10,9 @@ class DetallePedidoDAO {
             VALUES (?, ?, ?, ?, ?)
         ");
         $stmt->bind_param('iiidd', $pedidoId, $productoId, $cantidad, $precioUnitario, $precioTotal);
-        $stmt->execute();
+        $resultado =  $stmt->execute();
         $stmt->close();
+        return $resultado;
     }
 
     public static function obtenerDetallesPorPedido($pedidoId) {
@@ -51,8 +52,9 @@ class DetallePedidoDAO {
             WHERE ID_DetallePedido = ?
         ");
         $stmt->bind_param('iddi', $cantidad, $precioUnitario, $precioTotal, $detalleId);
-        $stmt->execute();
+        $resultado = $stmt->execute();
         $stmt->close();
+        return $resultado;
     }
 
     public static function agregarProducto($pedidoId, $productoId, $cantidad, $precioUnitario) {
@@ -64,8 +66,10 @@ class DetallePedidoDAO {
             VALUES (?, ?, ?, ?, ?)
         ");
         $stmt->bind_param('iiidd', $pedidoId, $productoId, $cantidad, $precioUnitario, $precioTotal);
-        $stmt->execute();
+      $resultado = $stmt->execute();
         $stmt->close();
+        return $resultado; 
+
     }
 
     public static function eliminarProducto($detalleId) {
@@ -76,8 +80,12 @@ class DetallePedidoDAO {
             WHERE ID_DetallePedido = ?
         ");
         $stmt->bind_param('i', $detalleId);
-        $stmt->execute();
+        $resultado = $stmt->execute(); 
+       
         $stmt->close();
+        $con->close();
+        
+        return $resultado;
     }
 
    

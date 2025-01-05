@@ -212,17 +212,15 @@ class apiController
         echo json_encode($usuarios);
     }
 
-    public function actualizarUsuario()
-    {
+    public function actualizarUsuario() {
         header("Content-Type: application/json; charset=UTF-8");
-
         $usuarioActual = $this->getUsuarioActual();
+        
         if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
             echo json_encode(['success' => false, 'message' => 'Método no permitido']);
             return;
         }
-
-
+    
         $datos = json_decode(file_get_contents("php://input"));
         if (!$datos || !isset($datos->ID_Usuario)) {
             echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
@@ -233,8 +231,10 @@ class apiController
             $datos->ID_Usuario,
             $datos->Nombre,
             $datos->Correo,
-            $datos->Rol
+            $datos->Rol,
+            isset($datos->Contraseña) ? $datos->Contraseña : null
         );
+        
         if ($resultado) {
             LogsDAO::crearLog("Actualizado usuario con ID: " . $datos->ID_Usuario, $usuarioActual);
         }

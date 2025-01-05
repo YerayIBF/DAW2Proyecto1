@@ -50,8 +50,31 @@
     font-size: 12px;
     letter-spacing: 1px;
     line-height: 1;
+    
+}
+
+.DireccionEspaciocuenta{
+    margin-bottom: 60px;
 }
 
 .boton-cuenta:hover {
     background-color: #606060;
 }
+
+
+.pedido-card {
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.pedido-card:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-select, .form-control {
+    max-width: 100px;
+}
+
+.bg-custom {
+    background-color: #3F5850 !important;
+  }

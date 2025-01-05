@@ -27,19 +27,20 @@ class PedidoDAO
     public static function obtenerPedidosPorUsuario($usuarioId)
     {
         $db = database::connect();
-        $stmt = $db->prepare("SELECT * FROM Pedidos WHERE ID_Usuario = ?");
+        $stmt = $db->prepare("SELECT * FROM Pedidos WHERE ID_Usuario = ? ORDER BY Fecha_Pedido DESC");
         $stmt->bind_param('i', $usuarioId);
         $stmt->execute();
         $resultado = $stmt->get_result();
-
+    
         $pedidos = [];
         while ($pedido = $resultado->fetch_object('pedido')) {
             $pedidos[] = $pedido;
         }
-
+    
         $stmt->close();
         return $pedidos;
     }
+    
 
     public static function obtenerPedidoPorId($pedidoId)
     {

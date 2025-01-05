@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
+<?php if (isset($error)): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo $error; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
     <main>
     <h1 class="registro-titulo">Crear cuenta</h1>
         <section class="contenedor">
-            
             <form  class="form-registro"  action="?controller=producto&action=registrarte" method="POST">   
                 <label class="label-registro" for="nombre">Nombre</label>
+                <br>
+                <input class="inputs-registro" type="text" name="nombre" required>
+                <br>
+                <label class="label-registro" for="apellido">Apellido</label>
                 <br>
                 <input class="inputs-registro" type="text" name="nombre" required>
                 <br>

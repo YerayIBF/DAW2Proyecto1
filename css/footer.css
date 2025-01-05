@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'futura';
     src:url(../fuentes/Futura\ Book.ttf);
@@ -13,6 +14,28 @@
   }
   
 
+.ContenedorFooter {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.tituloForm{
+    color: #3a3a3a;
+    font-family: 'AdobeCaslonPro';
+    font-size: 53px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.descForm{
+    color: #3a3a3a;
+    font-family: 'futura';
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
 .boton-footer{
     color: white;
     background-color: #333333;
@@ -23,10 +46,33 @@
     margin-left: 20px;
     padding: 20px;
 }
+
 .seccion1-footer{
     background-color: #E3ECE6;
-   
+    min-height: 200px; 
+    height: auto; 
+    margin: 20px 0px 0px;
+    padding: 34px 0px 0px;
 }
+
+.formulario-Footer{
+    width: 100%;
+}
+
+.formulario-Footer input{
+    width: 100%;
+    max-width: 634px;
+    font-size: 16px;
+    color: #000000;
+    font-family: 'Times New Roman';
+    margin: 0px 10px  16px 0px;
+    padding: 10px 18px;
+    background: transparent;
+    border: 2px solid #333;
+    height: 55px;
+    outline: none;
+}
+
 .footer h2, .footer h5 {
     font-weight: bold;
 }
@@ -40,7 +86,8 @@
 }
 
 .footer .iconos-sociales i {
-    margin-right: 15px;
+    margin-right:5px;
+    margin-top: 10px;
 }
 
 .select-pais {
@@ -50,6 +97,100 @@
 }
 
 .boton-footer{
-height: 60px;
+    height: 60px;
+
+}
+
+
+.footer {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.footerLinks{
+    font-family: 'futura';
+}
+
+
+.footerLinks p{
+    font-size: 17.45px;
+    color: #3a3a3a;
+    margin: 0px !important;
+
+}
+
+.footerLinks p{
+    font-size: 17.45px;
+    color: #3a3a3a;
+
+}
+
+.footerLinks h6{
+    font-size: 17.45px;
+    color: #3a3a3a;
+    margin-bottom: 17.5px !important;
+    font-weight: 700;
+}
+
+.footerDescripción{
+    font-size: 15px;
+    color: #333232;
+    margin-bottom: 17.5px;
+}
+
+
+
+
+
+
+
+.imagen-overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    height: auto;
+    margin-top: -30px;
+}
+
+.seccion1-footer {
+    position: relative;
+    z-index: 0;
+}
+
+.seccion2-footer {
+    position: relative;
+    z-index: 0;
+    padding: 60px 0px;
+    
+}
+
+
+.select-container{
+    margin-bottom: 50px;
+}
+
+.ajusteFormSelect{
+    height: 50 !important;
+    width: 100px;
+}
+
+.select-pais select {
+    width: 93.74px !important; 
+    height: 40px !important;
+    font-size: 14px;
+    padding: 5px;
+    border: 2px solid #333;
+    margin-left: 40px;
+    
+}
+
+.select2-container--default .select2-selection--single {
+    width: 127.64px !important; 
+    height: 40px !important;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid #333 !important;
 
 }

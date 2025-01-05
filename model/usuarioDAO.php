@@ -16,9 +16,22 @@ class UsuarioDAO {
             } else {
                 return false; 
             }
-        } else {
-            die("Error preparando la consulta: " . $con->error);
+        } 
+    }
+
+    public static function verificarCorreoExistente($correo) {
+        $con = database::connect();
+        $stmt = $con->prepare("SELECT COUNT(*) as count FROM Usuarios WHERE Correo = ?");
+        
+        if ($stmt) {
+            $stmt->bind_param("s", $correo);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            $datos = $resultado->fetch_object('Usuario');
+            
+            return $datos->count > 0;  // Accedemos al campo 'count' del objeto
         }
+        return false;  // Si la consulta falla, asumimos que el correo no existe
     }
 
     public static function obtenerTodosUsuarios() {
@@ -33,12 +46,21 @@ class UsuarioDAO {
         return $usuarios;
     }
 
-    public static function actualizarUsuario($id, $nombre, $correo, $rol) {
+    public static function actualizarUsuario($id, $nombre, $correo, $rol, $nuevaContraseña = null) {
         $con = database::connect();
-        $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=? WHERE ID_Usuario=?");
+        
+        if ($nuevaContraseña) {
+            // Si hay nueva contraseña, actualizarla junto con los demás datos
+            $contraseñaHash = password_hash($nuevaContraseña, PASSWORD_BCRYPT);
+            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=?, Contraseña=? WHERE ID_Usuario=?");
+            $stmt->bind_param("ssssi", $nombre, $correo, $rol, $contraseñaHash, $id);
+        } else {
+            // Si no hay nueva contraseña, actualizar solo los demás datos
+            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=? WHERE ID_Usuario=?");
+            $stmt->bind_param("sssi", $nombre, $correo, $rol, $id);
+        }
         
         if ($stmt) {
-            $stmt->bind_param("sssi", $nombre, $correo, $rol, $id);
             return $stmt->execute();
         }
         return false;

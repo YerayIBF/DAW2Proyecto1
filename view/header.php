@@ -16,7 +16,6 @@
   </section>
 
   <section class="headerInf">
-
     <div class="logo-menu">
       <div class="logo">
         <img src="img/Logo.png">
@@ -107,7 +106,7 @@
   </section>
 
   <script src="js/panelCompra.js"></script>
- 
+
 </body>
 
 </html>

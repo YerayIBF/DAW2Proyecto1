@@ -70,7 +70,7 @@
                                                         onchange="this.form.submit()">
                                                 </form>
                                             </td>
-                                            <td class="td-Total text-end">€<?= number_format($producto->totalProducto, 2) ?></td>
+                                            <td class="td-Total text-end"><?= number_format($producto->totalProducto, 2) ?> €</td>
                                         </tr>
                                     <?php } ?>
                                 <?php } ?>
@@ -92,7 +92,7 @@
                         <div class="col-lg-6 text-end">
                             <div class="mb-3">
                                 <span class="Subtotal-carrito">Subtotal</span>
-                                <span class="Subtotal-precio-carrito">€<?= number_format($totalCarrito, 2) ?></span>
+                                <span class="Subtotal-precio-carrito"><?= number_format($totalCarrito, 2) ?> €</span>
                             </div>
                             <div class=" text-muted impuesto-texto">
                                 Impuesto incluido. <a href="#" class=" a-impuesto-texto">Los gastos de envío</a> se calculan en la pantalla de pagos.

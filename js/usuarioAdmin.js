@@ -76,6 +76,7 @@ class UsuarioAdmin {
                         <th class="sortable" data-sort="nombre">Nombre ↕</th>
                         <th class="sortable" data-sort="correo">Correo ↕</th>
                         <th class="sortable" data-sort="rol">Rol ↕</th>
+                        <th>Contraseña</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -105,7 +106,7 @@ class UsuarioAdmin {
 
     renderUsuarios(usuarios) {
         this.tablaUsuarios.innerHTML = usuarios.length ? "" : 
-            `<tr><td colspan="5">No hay usuarios disponibles</td></tr>`;
+            `<tr><td colspan="6">No hay usuarios disponibles</td></tr>`;
 
         usuarios.forEach(usuario => {
             const fila = document.createElement("tr");
@@ -115,6 +116,7 @@ class UsuarioAdmin {
                 <td>${usuario.Nombre}</td>
                 <td>${usuario.Correo}</td>
                 <td>${usuario.Rol}</td>
+                <td>********</td>
                 <td>
                     <button class="btn-editar" data-id="${usuario.ID_Usuario}">Editar</button>
                     <button class="btn-eliminar" data-id="${usuario.ID_Usuario}">Eliminar</button>
@@ -175,13 +177,14 @@ class UsuarioAdmin {
                 <option value="admin" ${usuario.Rol === 'admin' ? 'selected' : ''}>Admin</option>
             </select>
         `;
-        celdas[4].innerHTML = `
+        celdas[4].innerHTML = `<input type="password" class="form-control" placeholder="Nueva contraseña" />`;
+        celdas[5].innerHTML = `
             <button class="btn-guardar" data-id="${id}">Guardar</button>
             <button class="btn-cancelar" data-id="${id}">Cancelar</button>
         `;
 
-        const btnGuardar = celdas[4].querySelector('.btn-guardar');
-        const btnCancelar = celdas[4].querySelector('.btn-cancelar');
+        const btnGuardar = celdas[5].querySelector('.btn-guardar');
+        const btnCancelar = celdas[5].querySelector('.btn-cancelar');
 
         btnGuardar.addEventListener('click', () => this.guardarCambios(id));
         btnCancelar.addEventListener('click', () => this.cancelarEdicion(id));
@@ -194,17 +197,25 @@ class UsuarioAdmin {
         const nombre = fila.querySelector('input[type="text"]').value;
         const correo = fila.querySelector('input[type="email"]').value;
         const rol = fila.querySelector('select').value;
+        const nuevaContraseña = fila.querySelector('input[type="password"]').value;
+
+        const datosActualizacion = {
+            ID_Usuario: id,
+            Nombre: nombre,
+            Correo: correo,
+            Rol: rol
+        };
+
+        // Solo incluir la contraseña si se ha introducido una nueva
+        if (nuevaContraseña) {
+            datosActualizacion.Contraseña = nuevaContraseña;
+        }
 
         try {
             const response = await fetch('?controller=api&action=actualizarUsuario', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ID_Usuario: id,
-                    Nombre: nombre,
-                    Correo: correo,
-                    Rol: rol
-                })
+                body: JSON.stringify(datosActualizacion)
             });
 
             const resultado = await response.json();
@@ -281,6 +292,7 @@ class UsuarioAdmin {
         this.aplicarFiltros();
     }
 
+    
     aplicarFiltros() {
         let usuariosFiltrados = this.usuariosData.filter(usuario => {
             const cumpleId = !this.filtros.id || 

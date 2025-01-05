@@ -68,7 +68,6 @@ Seccion de productos
 .seccion1-titulo {
     text-align: center;
     margin-top: 40px;
-   
 }
 
 .seccion1-titulo h2 {
@@ -88,7 +87,7 @@ Seccion de productos
 
 .plato-card {
     background-color: #F7F2EE; 
-    padding: 100px 0px 0px ;
+    padding: 100px 0px 100px;
     border-color: #F7F2EE;
     margin-bottom: 20px;
 }

@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+<?php if (isset($error)): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo $error; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
     <main>
 <h1 class="login-titulo">Ingresar</h1>
     <section class="contenedor">
