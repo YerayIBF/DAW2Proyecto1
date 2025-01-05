@@ -2,9 +2,13 @@
 include_once("config/parameters.php");
 include_once("controller/productoController.php");
 include_once("controller/apiController.php");
+include_once("controller/cuentaController.php");
+include_once("controller/homeController.php");
+include_once("controller/carritoController.php");
+
 
 if(!isset($_GET['controller'])){
-    header("Location:" . url . "?controller=producto");
+    header("Location:" . url . "?controller=home");
 }else{
     $nombre_controller = $_GET['controller']."Controller";
     if(class_exists($nombre_controller)){

@@ -21,7 +21,7 @@
         <section class="container-fluid">
             <div class="text-center mb-4">
                 <h1 class="h1-cuenta">Mi cuenta</h1>
-                <a href="?controller=producto&action=cerrarSession" class="a-cuenta">Cerrar sesión</a>
+                <a href="?controller=cuenta&action=cerrarSession" class="a-cuenta">Cerrar sesión</a>
             </div>
             <div class="row">
                 <div class="col-md-8">

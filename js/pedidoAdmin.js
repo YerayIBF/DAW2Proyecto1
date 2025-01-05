@@ -80,24 +80,24 @@ class PedidoAdmin {
             </div>
             
             <div class="filtros-container mb-3">
-                <input type="text" id="filtro-id" placeholder="Filtrar por ID" class="me-2">
-                <input type="text" id="filtro-usuario" placeholder="Filtrar por usuario" class="me-2">
-                <input type="date" id="filtro-fecha" class="me-2">
-                <input type="number" id="filtro-precio" placeholder="Precio mínimo" class="me-2">
-                <select id="filtro-estado" class="me-2">
+                <input type="text" id="filtro-id" placeholder="Filtrar por ID" class="me-1">
+                <input type="text" id="filtro-usuario" placeholder="Filtrar por usuario" class="me-1">
+                <input type="date" id="filtro-fecha" class="me-1">
+                <input type="number" id="filtro-precio" placeholder="Precio mínimo" class="me-1">
+                <select id="filtro-estado" class="me-1">
                     <option value="">Todos los estados</option>
                     <option value="En preparación">En preparación</option>
                     <option value="En camino">En camino</option>
                     <option value="Entregado">Entregado</option>
                     <option value="Cancelado">Cancelado</option>
                 </select>
-                <input type="text" id="filtro-oferta" placeholder="Filtrar por oferta" class="me-2">
-                <input type="text" id="filtro-direccion" placeholder="Filtrar por dirección" class="me-2">
-                <input type="text" id="filtro-dedicatoria" placeholder="Filtrar por dedicatoria" class="me-2">
+                <input type="text" id="filtro-oferta" placeholder="Filtrar por oferta" class="me-1">
+                <input type="text" id="filtro-direccion" placeholder="Filtrar por dirección" class="me-1">
+                <input type="text" id="filtro-dedicatoria" placeholder="Filtrar por dedicatoria" class="me-1">
                 <button id="btn-limpiar-filtros">Limpiar filtros</button>
                 <div class="ajusteLabelCambioMoneda">
                     <label for="currency-selector">Cambiar moneda:</label>
-                    <select id="currency-selector" class="me-2">
+                    <select id="currency-selector" class="me-1">
                         <option value="EUR">EUR</option>
                         <option value="USD">USD</option>
                         <option value="GBP">GBP</option>

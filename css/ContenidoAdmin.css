@@ -154,14 +154,9 @@ table.empty {
     margin-bottom: 15px;
     margin-top: 20px;
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
-.filtros-container input {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
 
 .sortable {
     cursor: pointer;

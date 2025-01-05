@@ -16,7 +16,7 @@
     <main>
 <h1 class="login-titulo">Ingresar</h1>
     <section class="contenedor">
-        <form class="form-login"   action="?controller=producto&action=iniciarSession" method="POST">
+        <form class="form-login"   action="?controller=cuenta&action=iniciarSession" method="POST">
             <label class="label-login" for="correo" >Correo electrónico</label>
             <br>
             <input type="email" name="correo" class="inputs-login" required> 
@@ -32,7 +32,7 @@
              
                 <input class="boton-login" type="submit" value="REGISTRARSE">
                 <br>
-                <a href="?controller=producto&action=registrarte" class="a-login mb-3 ">Crear cuenta</a>
+                <a href="?controller=cuenta&action=registrarte" class="a-login mb-3 ">Crear cuenta</a>
             </div>
         </form>
     </section>

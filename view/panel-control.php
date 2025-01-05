@@ -16,7 +16,7 @@
             <a href="" link="productos">Productos</a>
             <a href="" link="ofertas">Ofertas</a>
             <a href="" link="logs">Logs</a>
-            <a href="?controller=producto&action=index" id="btn-volver">volver</a>
+            <a href="?controller=home&action=index" id="btn-volver">volver</a>
         </nav>
     </div>
     <div class="main-content">

@@ -23,17 +23,17 @@
     </div>
 
     <nav class="menu">
-      <a href="?controller=producto&action=index">INICIO</a>
+      <a href="?controller=home&action=index">INICIO</a>
       <a href="?controller=producto&action=carta">CARTA</a>
       <?php if (isset($_SESSION['usuario']['rol']) && $_SESSION['usuario']['rol'] === 'admin'): ?>
-        <a href="?controller=producto&action=panelControl">ADMIN</a>
+        <a href="?controller=api&action=panelControl">ADMIN</a>
       <?php endif; ?>
     </nav>
 
     <div class="seccion-iconos">
       <input type="text" class="buscador" placeholder="Buscar">
       <a class="icono"><img src="img/iconoLupa.png"></a>
-      <a class="icono" href="?controller=producto&action=verCuenta"><img src="img/iconoUsuario.png"></a>
+      <a class="icono" href="?controller=cuenta&action=verCuenta"><img src="img/iconoUsuario.png"></a>
       <a id="icono-carrito" class="icono"><img src="img/iconoCarrito.png"></a>
       <?php if (!empty($_SESSION['carrito'])) { ?>
         <p class="numcarrito"><?= count($_SESSION['carrito']); ?></p>
@@ -95,7 +95,7 @@
 
       <!-- Botón Comprar -->
       <div class="contenedor-boton-panel">
-        <a href="?controller=producto&action=carrito">
+        <a href="?controller=carrito&action=carrito">
           <button class="boton-panel-comprar">Comprar</button>
         </a>
       </div>

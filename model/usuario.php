@@ -3,9 +3,11 @@ class Usuario {
     protected $ID_Usuario; 
     
     protected $Nombre; 
+
+    protected $Apellido;
     
     protected $Correo; 
-    
+
     protected $Contraseña;
     
     protected $Rol;
@@ -112,6 +114,26 @@ class Usuario {
     public function setRol($Rol)
     {
         $this->Rol = $Rol;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Apellido
+     */ 
+    public function getApellido()
+    {
+        return $this->Apellido;
+    }
+
+    /**
+     * Set the value of Apellido
+     *
+     * @return  self
+     */ 
+    public function setApellido($Apellido)
+    {
+        $this->Apellido = $Apellido;
 
         return $this;
     }

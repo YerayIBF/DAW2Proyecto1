@@ -18,6 +18,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 class apiController
 {
 
+    public function panelControl()
+    {
+        session_start();
+        include_once 'view/panel-control.php';
+    }
+    
     public function getUsuarioActual() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -230,6 +236,7 @@ class apiController
         $resultado = UsuarioDAO::actualizarUsuario(
             $datos->ID_Usuario,
             $datos->Nombre,
+            $datos->Apellido,
             $datos->Correo,
             $datos->Rol,
             isset($datos->Contraseña) ? $datos->Contraseña : null
@@ -281,6 +288,7 @@ class apiController
 
         $resultado = UsuarioDAO::crearUsuario(
             $datos->Nombre,
+            $datos->Apellido,
             $datos->Correo,
             $datos->Contraseña,
             $datos->Rol ?? 'usuario'

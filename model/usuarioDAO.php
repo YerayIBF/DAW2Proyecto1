@@ -3,20 +3,17 @@ include_once 'config/database.php';
 include_once 'model/Usuario.php';
 
 class UsuarioDAO {
-    public static function crearUsuario($nombre, $correo, $contraseña, $rol = 'usuario') {
+    public static function crearUsuario($nombre, $apellido, $correo, $contraseña, $rol = 'usuario') {
         $con = database::connect();
         
         $contraseñaHash = password_hash($contraseña, PASSWORD_BCRYPT);
-        $stmt = $con->prepare("INSERT INTO Usuarios (Nombre, Correo, Contraseña, Rol) VALUES (?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO Usuarios (Nombre, Apellido, Correo, Contraseña, Rol) VALUES (?, ?, ?, ?, ?)");
 
         if ($stmt) {
-            $stmt->bind_param("ssss", $nombre, $correo, $contraseñaHash, $rol);
-            if ($stmt->execute()) {
-                return true; 
-            } else {
-                return false; 
-            }
-        } 
+            $stmt->bind_param("sssss", $nombre, $apellido, $correo, $contraseñaHash, $rol);
+            return $stmt->execute();
+        }
+        return false;
     }
 
     public static function verificarCorreoExistente($correo) {
@@ -36,7 +33,7 @@ class UsuarioDAO {
 
     public static function obtenerTodosUsuarios() {
         $con = database::connect();
-        $query = "SELECT ID_Usuario, Nombre, Correo, Rol FROM Usuarios";
+        $query = "SELECT ID_Usuario, Nombre, Apellido, Correo, Rol FROM Usuarios"; 
         $resultado = $con->query($query);
         
         $usuarios = [];
@@ -46,25 +43,21 @@ class UsuarioDAO {
         return $usuarios;
     }
 
-    public static function actualizarUsuario($id, $nombre, $correo, $rol, $nuevaContraseña = null) {
+    public static function actualizarUsuario($id, $nombre, $apellido, $correo, $rol, $nuevaContraseña = null) {
         $con = database::connect();
         
         if ($nuevaContraseña) {
-            // Si hay nueva contraseña, actualizarla junto con los demás datos
             $contraseñaHash = password_hash($nuevaContraseña, PASSWORD_BCRYPT);
-            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=?, Contraseña=? WHERE ID_Usuario=?");
-            $stmt->bind_param("ssssi", $nombre, $correo, $rol, $contraseñaHash, $id);
+            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Apellido=?, Correo=?, Rol=?, Contraseña=? WHERE ID_Usuario=?");
+            $stmt->bind_param("sssssi", $nombre, $apellido, $correo, $rol, $contraseñaHash, $id);
         } else {
-            // Si no hay nueva contraseña, actualizar solo los demás datos
-            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Correo=?, Rol=? WHERE ID_Usuario=?");
-            $stmt->bind_param("sssi", $nombre, $correo, $rol, $id);
+            $stmt = $con->prepare("UPDATE Usuarios SET Nombre=?, Apellido=?, Correo=?, Rol=? WHERE ID_Usuario=?");
+            $stmt->bind_param("ssssi", $nombre, $apellido, $correo, $rol, $id);
         }
         
-        if ($stmt) {
-            return $stmt->execute();
-        }
-        return false;
+        return $stmt && $stmt->execute();
     }
+
 
     public static function eliminarUsuario($id) {
         $con = database::connect();
@@ -86,17 +79,15 @@ class UsuarioDAO {
             $stmt->execute();
             $resultado = $stmt->get_result();
     
-            $datos = $resultado->fetch_object('Usuario');
-            if ($datos && password_verify($contraseña, $datos->getContraseña())) {
-                return $datos; 
+            if ($usuario = $resultado->fetch_object('Usuario')) {
+                if (password_verify($contraseña, $usuario->getContraseña())) {
+                    return $usuario;
+                }
             }
         }
-    
-        return null; 
-        
+        return null;
     }
 
-    
     
 
 }

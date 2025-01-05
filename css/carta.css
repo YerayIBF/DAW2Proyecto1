@@ -17,23 +17,19 @@
     padding: 0;
     box-sizing: border-box;
 }
-.Seccion-titulo-carta
-{
+.Seccion-titulo-carta {
     text-align: center;
     margin-bottom: 80px;
 }
 
-.Seccion-titulo-carta h1
-{
+.Seccion-titulo-carta h1 {
     font-family: 'AdobeCaslonPro';
     margin-top: 50px;
     font-weight: 600;
     font-size: 50px;
 }
 
-
-.Seccion-titulo-carta a
-{
+.Seccion-titulo-carta a {
     font-family: 'futura';
     color: #3F5850 !important;
 }
@@ -41,7 +37,6 @@
 .seccion1-titulo {
     text-align: center;
     margin-top: 40px;
-   
 }
 
 .seccion1-titulo h2 {
@@ -55,16 +50,14 @@
     font-size: 18x;
     font-family: 'futura';
     opacity: 70%;
-    
 }
 
 .plato-card {
     background-color: #F7F2EE; 
-    padding: 100px 0px 0px ;
+    padding: 100px 0px 0px;
     border-color: #F7F2EE;
     margin-bottom: 20px;
 }
-
 
 .plato-img {
    object-fit: contain;
@@ -92,7 +85,7 @@
 }
 
 .texto-producto {
- text-align: center;
+    text-align: center;
 }
 
 .texto-producto h5 {
@@ -105,11 +98,10 @@
 
 .texto-producto p {
     font-family: 'futura' !important;
-    font-size: 20px ;
+    font-size: 20px;
     color: #000000;
     opacity: 60%;
 }
-
 
 .btn-ver-platos {
     background-color: #94B49C;
@@ -124,4 +116,90 @@
 
 .btn-ver-platos:hover {
     background-color: #C5D7CB; 
+}
+
+.filtro-sidebar {
+    padding: 20px;
+    background-color: #ffffff;
+    font-family: 'futura', sans-serif;
+}
+
+.filtro-seccion {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+
+.filtro-seccion:last-child {
+    border-bottom: none;
+}
+
+.filtro-titulo {
+    font-family: 'futura', sans-serif;
+    color: #3F5850;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filtro-contenido {
+    padding-left: 10px;
+}
+
+.filtro-opcion {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.filtro-opcion input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filtro-opcion label {
+    font-family: 'futura', sans-serif;
+    color: #3F5850;
+    font-size: 14px;
+}
+
+.contenedor-seleccion-ordenar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.seleccion-ordenar {
+    width: 200px;
+    border: none !important; 
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'futura', sans-serif;
+}
+
+
+.flecha-filtro {
+    transition: transform 0.3s ease;
+    transform: rotate(90deg);
+}
+
+.filtro-titulo.collapsed .flecha-filtro {
+    transform: rotate(0deg);
+}
+
+.rango-filtro {
+    padding: 10px 0;
+}
+.hr-margen{
+    margin-top: 0;
+}
+.entrada-rango {
+    width: 80px;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }

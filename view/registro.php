@@ -16,14 +16,14 @@
     <main>
     <h1 class="registro-titulo">Crear cuenta</h1>
         <section class="contenedor">
-            <form  class="form-registro"  action="?controller=producto&action=registrarte" method="POST">   
+            <form  class="form-registro"  action="?controller=cuenta&action=registrarte" method="POST">   
                 <label class="label-registro" for="nombre">Nombre</label>
                 <br>
                 <input class="inputs-registro" type="text" name="nombre" required>
                 <br>
                 <label class="label-registro" for="apellido">Apellido</label>
                 <br>
-                <input class="inputs-registro" type="text" name="nombre" required>
+                <input class="inputs-registro" type="text" name="apellido" required>
                 <br>
                 <label class="label-registro" for="correo">Correo electrónico</label>
                 <br>

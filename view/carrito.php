@@ -53,14 +53,14 @@
                                                             <li><?= $producto->getDescripcion(); ?></li>
                                                         </ul>
                                                         <div class="quitar-producto">
-                                                            <a href="?controller=producto&action=quitarProductoCarrito&id=<?= $producto->getID_Producto(); ?>">Quitar</a>
+                                                            <a href="?controller=carrito&action=quitarProductoCarrito&id=<?= $producto->getID_Producto(); ?>">Quitar</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="td-precio text-end">€<?= $producto->getPrecio() ?></td>
                                             <td class="td-Cantidad text-end">
-                                                <form method="POST" action="?controller=producto&action=actualizarCantidad">
+                                                <form method="POST" action="?controller=carrito&action=actualizarCantidad">
                                                     <input type="hidden" name="id_producto" value="<?= $producto->getID_Producto(); ?>">
                                                     <input
                                                         class="cantidad-input"
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <form method="POST" action="?controller=producto&action=paginaFinalizarPedido">
+            <form method="POST" action="?controller=carrito&action=paginaFinalizarPedido">
                 <div class="container-fluid ajuste-carrito">
                     <div class="row">
 

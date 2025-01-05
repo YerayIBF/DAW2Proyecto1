@@ -35,7 +35,7 @@
                     <div class="col-md-3">
                         <div class="plato-card text-center">
                             <img src="img/<?= $producto->getImagen(); ?>" class="plato-img" alt="<?= $producto->getNombre(); ?>">
-                            <form action="?controller=producto&action=addProducto" method="POST">
+                            <form action="?controller=home&action=addProducto" method="POST">
                                 <input type="hidden" name="ID_Producto" value="<?= $producto->getID_Producto(); ?>">
                                 <button type="submit" class="btn-anadir">AÑADIR AL CARRITO</button>
                             </form>

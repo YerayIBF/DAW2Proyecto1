@@ -10,6 +10,7 @@ class UsuarioAdmin {
         this.filtros = JSON.parse(localStorage.getItem('filtrosUsuarios')) || {
             id: '',
             nombre: '',
+            apellido: '',
             correo: '',
             rol: ''
         };
@@ -25,6 +26,7 @@ class UsuarioAdmin {
         this.restaurarFiltros();
     }
 
+
     renderTabla() {
         this.usuariosSection.innerHTML = `
             <h2>USUARIOS</h2>
@@ -35,6 +37,10 @@ class UsuarioAdmin {
                     <div>
                         <label>Nombre:</label><br>
                         <input type="text" id="nombre" required class="form-control">
+                    </div>
+                    <div>
+                        <label>Apellido:</label><br>
+                        <input type="text" id="apellido" required class="form-control">
                     </div>
                     <div>
                         <label>Correo:</label><br>
@@ -61,6 +67,7 @@ class UsuarioAdmin {
             <div class="filtros-container mb-3">
                 <input type="text" id="filtro-id" placeholder="Filtrar por ID" class="me-2">
                 <input type="text" id="filtro-nombre" placeholder="Filtrar por nombre" class="me-2">
+                <input type="text" id="filtro-apellido" placeholder="Filtrar por apellido" class="me-2">
                 <input type="text" id="filtro-correo" placeholder="Filtrar por correo" class="me-2">
                 <select id="filtro-rol" class="me-2">
                     <option value="">Todos los roles</option>
@@ -74,6 +81,7 @@ class UsuarioAdmin {
                     <tr>
                         <th class="sortable" data-sort="id">ID ↕</th>
                         <th class="sortable" data-sort="nombre">Nombre ↕</th>
+                        <th class="sortable" data-sort="apellido">Apellido ↕</th>
                         <th class="sortable" data-sort="correo">Correo ↕</th>
                         <th class="sortable" data-sort="rol">Rol ↕</th>
                         <th>Contraseña</th>
@@ -106,7 +114,7 @@ class UsuarioAdmin {
 
     renderUsuarios(usuarios) {
         this.tablaUsuarios.innerHTML = usuarios.length ? "" : 
-            `<tr><td colspan="6">No hay usuarios disponibles</td></tr>`;
+            `<tr><td colspan="7">No hay usuarios disponibles</td></tr>`;
 
         usuarios.forEach(usuario => {
             const fila = document.createElement("tr");
@@ -114,6 +122,7 @@ class UsuarioAdmin {
             fila.innerHTML = `
                 <td>${usuario.ID_Usuario}</td>
                 <td>${usuario.Nombre}</td>
+                <td>${usuario.Apellido}</td>
                 <td>${usuario.Correo}</td>
                 <td>${usuario.Rol}</td>
                 <td>********</td>
@@ -170,21 +179,22 @@ class UsuarioAdmin {
 
         const celdas = fila.getElementsByTagName('td');
         celdas[1].innerHTML = `<input type="text" class="form-control" value="${usuario.Nombre}" />`;
-        celdas[2].innerHTML = `<input type="email" class="form-control" value="${usuario.Correo}" />`;
-        celdas[3].innerHTML = `
+        celdas[2].innerHTML = `<input type="text" class="form-control" value="${usuario.Apellido}" />`;
+        celdas[3].innerHTML = `<input type="email" class="form-control" value="${usuario.Correo}" />`;
+        celdas[4].innerHTML = `
             <select class="form-control">
                 <option value="usuario" ${usuario.Rol === 'usuario' ? 'selected' : ''}>Usuario</option>
                 <option value="admin" ${usuario.Rol === 'admin' ? 'selected' : ''}>Admin</option>
             </select>
         `;
-        celdas[4].innerHTML = `<input type="password" class="form-control" placeholder="Nueva contraseña" />`;
-        celdas[5].innerHTML = `
+        celdas[5].innerHTML = `<input type="password" class="form-control" placeholder="Nueva contraseña" />`;
+        celdas[6].innerHTML = `
             <button class="btn-guardar" data-id="${id}">Guardar</button>
             <button class="btn-cancelar" data-id="${id}">Cancelar</button>
         `;
 
-        const btnGuardar = celdas[5].querySelector('.btn-guardar');
-        const btnCancelar = celdas[5].querySelector('.btn-cancelar');
+        const btnGuardar = celdas[6].querySelector('.btn-guardar');
+        const btnCancelar = celdas[6].querySelector('.btn-cancelar');
 
         btnGuardar.addEventListener('click', () => this.guardarCambios(id));
         btnCancelar.addEventListener('click', () => this.cancelarEdicion(id));
@@ -193,31 +203,32 @@ class UsuarioAdmin {
     async guardarCambios(id) {
         const fila = this.tablaUsuarios.querySelector(`tr[data-id="${id}"]`);
         if (!fila) return;
-
-        const nombre = fila.querySelector('input[type="text"]').value;
-        const correo = fila.querySelector('input[type="email"]').value;
-        const rol = fila.querySelector('select').value;
-        const nuevaContraseña = fila.querySelector('input[type="password"]').value;
-
+    
+        const nombre = fila.querySelector('td:nth-child(2) input').value;
+        const apellido = fila.querySelector('td:nth-child(3) input').value;
+        const correo = fila.querySelector('td:nth-child(4) input').value;
+        const rol = fila.querySelector('td:nth-child(5) select').value;
+        const nuevaContraseña = fila.querySelector('td:nth-child(6) input').value;
+    
         const datosActualizacion = {
             ID_Usuario: id,
             Nombre: nombre,
+            Apellido: apellido,
             Correo: correo,
             Rol: rol
         };
-
-        // Solo incluir la contraseña si se ha introducido una nueva
+    
         if (nuevaContraseña) {
             datosActualizacion.Contraseña = nuevaContraseña;
         }
-
+    
         try {
             const response = await fetch('?controller=api&action=actualizarUsuario', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datosActualizacion)
             });
-
+    
             const resultado = await response.json();
             if (resultado.success) {
                 alert('Usuario actualizado correctamente');
@@ -299,12 +310,14 @@ class UsuarioAdmin {
                 usuario.ID_Usuario.toString().includes(this.filtros.id);
             const cumpleNombre = !this.filtros.nombre || 
                 usuario.Nombre.toLowerCase().includes(this.filtros.nombre);
+            const cumpleApellido = !this.filtros.apellido || 
+                usuario.Apellido.toLowerCase().includes(this.filtros.apellido);
             const cumpleCorreo = !this.filtros.correo || 
                 usuario.Correo.toLowerCase().includes(this.filtros.correo);
             const cumpleRol = !this.filtros.rol || 
                 usuario.Rol.toLowerCase() === this.filtros.rol;
 
-            return cumpleId && cumpleNombre && cumpleCorreo && cumpleRol;
+            return cumpleId && cumpleNombre && cumpleApellido && cumpleCorreo && cumpleRol;
         });
 
         if (this.sortConfig.column) {
@@ -330,6 +343,7 @@ class UsuarioAdmin {
         this.renderUsuarios(usuariosFiltrados);
     }
 
+
     restaurarFiltros() {
         Object.entries(this.filtros).forEach(([key, value]) => {
             const elemento = this.usuariosSection.querySelector(`#filtro-${key}`);
@@ -343,7 +357,6 @@ class UsuarioAdmin {
         const formulario = this.usuariosSection.querySelector('#usuario-form');
         const btnCancelar = this.usuariosSection.querySelector('#btn-cancelar-crear');
     
-        // Restaurar datos guardados
         const savedFormData = localStorage.getItem('usuarioFormData');
         if (savedFormData) {
             const formData = JSON.parse(savedFormData);
@@ -353,11 +366,11 @@ class UsuarioAdmin {
             });
         }
     
-        // Guardar cambios en tiempo real
         formulario.querySelectorAll('input, select').forEach(input => {
             input.addEventListener('input', () => {
                 const formData = {
                     'nombre': formulario.querySelector('#nombre').value,
+                    'apellido': formulario.querySelector('#apellido').value,
                     'correo': formulario.querySelector('#correo').value,
                     'contraseña': formulario.querySelector('#contraseña').value,
                     'rol': formulario.querySelector('#rol').value
@@ -385,6 +398,7 @@ class UsuarioAdmin {
     
             const nuevoUsuario = {
                 Nombre: document.querySelector('#nombre').value,
+                Apellido: document.querySelector('#apellido').value,
                 Correo: document.querySelector('#correo').value,
                 Contraseña: document.querySelector('#contraseña').value,
                 Rol: document.querySelector('#rol').value

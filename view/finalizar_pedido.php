@@ -38,7 +38,7 @@
                 <div class="col-md-6 d-flex flex-column formulario-finalizar align-items-end ">
                     <div class="contenedorAjusteForm contenedorTamañoForm ">
                         <h2 class="formulario-H2">Entrega</h2>
-                        <form method="POST" action="?controller=producto&action=finalizarPedido">
+                        <form method="POST" action="?controller=carrito&action=finalizarPedido">
                             <select class="PaisSelect w-100 mb-3">
                                 <option>España</option>
                                 <option>Portugal</option>
@@ -94,7 +94,7 @@
                                 </div>
                             <?php } ?>
                         <?php } ?>
-                        <form method="POST" action="?controller=producto&action=aplicarCupon" class="FormCupon">
+                        <form method="POST" action="?controller=carrito&action=aplicarCupon" class="FormCupon">
                             <input type="text" name="Oferta" placeholder="AÑADE TU DESCUENTO AQUI" required>
                             <button type="submit">APLICAR</button>
                         </form>
